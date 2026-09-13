@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-13T17:30:35-06:00",
+  "title": "Design System: Intent Demos",
+  "extensions": {
+    "colorMeta": {
+      "paper": {
+        "role": "neutral",
+        "displayName": "Ledger Paper",
+        "tonalRamp": [
+          "oklch(15% 0.0054 95.1)",
+          "oklch(27% 0.0054 95.1)",
+          "oklch(39% 0.0054 95.1)",
+          "oklch(51% 0.0054 95.1)",
+          "oklch(63% 0.0054 95.1)",
+          "oklch(75% 0.0054 95.1)",
+          "oklch(87% 0.0054 95.1)",
+          "oklch(95% 0.0054 95.1)"
+        ]
+      },
+      "paper-bright": {
+        "role": "neutral",
+        "displayName": "Bright Sheet",
+        "tonalRamp": [
+          "oklch(15% 0.0041 91.4)",
+          "oklch(27% 0.0041 91.4)",
+          "oklch(39% 0.0041 91.4)",
+          "oklch(51% 0.0041 91.4)",
+          "oklch(63% 0.0041 91.4)",
+          "oklch(75% 0.0041 91.4)",
+          "oklch(87% 0.0041 91.4)",
+          "oklch(95% 0.0041 91.4)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ledger Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0019 106.6)",
+          "oklch(27% 0.0019 106.6)",
+          "oklch(39% 0.0019 106.6)",
+          "oklch(51% 0.0019 106.6)",
+          "oklch(63% 0.0019 106.6)",
+          "oklch(75% 0.0019 106.6)",
+          "oklch(87% 0.0019 106.6)",
+          "oklch(95% 0.0019 106.6)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Ink",
+        "tonalRamp": [
+          "oklch(15% 0.0036 106.6)",
+          "oklch(27% 0.0036 106.6)",
+          "oklch(39% 0.0036 106.6)",
+          "oklch(51% 0.0036 106.6)",
+          "oklch(63% 0.0036 106.6)",
+          "oklch(75% 0.0036 106.6)",
+          "oklch(87% 0.0036 106.6)",
+          "oklch(95% 0.0036 106.6)"
+        ]
+      },
+      "night": {
+        "role": "neutral",
+        "displayName": "Night Ledger",
+        "tonalRamp": [
+          "oklch(15% 0.0051 145.4)",
+          "oklch(27% 0.0051 145.4)",
+          "oklch(39% 0.0051 145.4)",
+          "oklch(51% 0.0051 145.4)",
+          "oklch(63% 0.0051 145.4)",
+          "oklch(75% 0.0051 145.4)",
+          "oklch(87% 0.0051 145.4)",
+          "oklch(95% 0.0051 145.4)"
+        ]
+      },
+      "night-raised": {
+        "role": "neutral",
+        "displayName": "Raised Night",
+        "tonalRamp": [
+          "oklch(15% 0.0072 145.3)",
+          "oklch(27% 0.0072 145.3)",
+          "oklch(39% 0.0072 145.3)",
+          "oklch(51% 0.0072 145.3)",
+          "oklch(63% 0.0072 145.3)",
+          "oklch(75% 0.0072 145.3)",
+          "oklch(87% 0.0072 145.3)",
+          "oklch(95% 0.0072 145.3)"
+        ]
+      },
+      "orange": {
+        "role": "primary",
+        "displayName": "Receipt Orange",
+        "tonalRamp": [
+          "oklch(15% 0.1946 37.6)",
+          "oklch(27% 0.1946 37.6)",
+          "oklch(39% 0.1946 37.6)",
+          "oklch(51% 0.1946 37.6)",
+          "oklch(63% 0.1946 37.6)",
+          "oklch(75% 0.1946 37.6)",
+          "oklch(87% 0.1946 37.6)",
+          "oklch(95% 0.1946 37.6)"
+        ]
+      },
+      "orange-dark": {
+        "role": "primary",
+        "displayName": "Stamped Orange",
+        "tonalRamp": [
+          "oklch(15% 0.1504 38.3)",
+          "oklch(27% 0.1504 38.3)",
+          "oklch(39% 0.1504 38.3)",
+          "oklch(51% 0.1504 38.3)",
+          "oklch(63% 0.1504 38.3)",
+          "oklch(75% 0.1504 38.3)",
+          "oklch(87% 0.1504 38.3)",
+          "oklch(95% 0.1504 38.3)"
+        ]
+      },
+      "yellow": {
+        "role": "secondary",
+        "displayName": "Source Yellow",
+        "tonalRamp": [
+          "oklch(15% 0.1592 84.4)",
+          "oklch(27% 0.1592 84.4)",
+          "oklch(39% 0.1592 84.4)",
+          "oklch(51% 0.1592 84.4)",
+          "oklch(63% 0.1592 84.4)",
+          "oklch(75% 0.1592 84.4)",
+          "oklch(87% 0.1592 84.4)",
+          "oklch(95% 0.1592 84.4)"
+        ]
+      },
+      "mint": {
+        "role": "tertiary",
+        "displayName": "Verified Mint",
+        "tonalRamp": [
+          "oklch(15% 0.0584 179.5)",
+          "oklch(27% 0.0584 179.5)",
+          "oklch(39% 0.0584 179.5)",
+          "oklch(51% 0.0584 179.5)",
+          "oklch(63% 0.0584 179.5)",
+          "oklch(75% 0.0584 179.5)",
+          "oklch(87% 0.0584 179.5)",
+          "oklch(95% 0.0584 179.5)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Copy",
+        "tonalRamp": [
+          "oklch(15% 0.0093 106.7)",
+          "oklch(27% 0.0093 106.7)",
+          "oklch(39% 0.0093 106.7)",
+          "oklch(51% 0.0093 106.7)",
+          "oklch(63% 0.0093 106.7)",
+          "oklch(75% 0.0093 106.7)",
+          "oklch(87% 0.0093 106.7)",
+          "oklch(95% 0.0093 106.7)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Paper Rule",
+        "tonalRamp": [
+          "oklch(15% 0.0097 100.0)",
+          "oklch(27% 0.0097 100.0)",
+          "oklch(39% 0.0097 100.0)",
+          "oklch(51% 0.0097 100.0)",
+          "oklch(63% 0.0097 100.0)",
+          "oklch(75% 0.0097 100.0)",
+          "oklch(87% 0.0097 100.0)",
+          "oklch(95% 0.0097 100.0)"
+        ]
+      },
+      "line-dark": {
+        "role": "neutral",
+        "displayName": "Night Rule",
+        "tonalRamp": [
+          "oklch(15% 0.0079 137.8)",
+          "oklch(27% 0.0079 137.8)",
+          "oklch(39% 0.0079 137.8)",
+          "oklch(51% 0.0079 137.8)",
+          "oklch(63% 0.0079 137.8)",
+          "oklch(75% 0.0079 137.8)",
+          "oklch(87% 0.0079 137.8)",
+          "oklch(95% 0.0079 137.8)"
+        ]
+      },
+      "danger": {
+        "role": "error",
+        "displayName": "Error Red",
+        "tonalRamp": [
+          "oklch(15% 0.1586 28.0)",
+          "oklch(27% 0.1586 28.0)",
+          "oklch(39% 0.1586 28.0)",
+          "oklch(51% 0.1586 28.0)",
+          "oklch(63% 0.1586 28.0)",
+          "oklch(75% 0.1586 28.0)",
+          "oklch(87% 0.1586 28.0)",
+          "oklch(95% 0.1586 28.0)"
+        ]
+      },
+      "success": {
+        "role": "success",
+        "displayName": "Success Green",
+        "tonalRamp": [
+          "oklch(15% 0.0901 163.5)",
+          "oklch(27% 0.0901 163.5)",
+          "oklch(39% 0.0901 163.5)",
+          "oklch(51% 0.0901 163.5)",
+          "oklch(63% 0.0901 163.5)",
+          "oklch(75% 0.0901 163.5)",
+          "oklch(87% 0.0901 163.5)",
+          "oklch(95% 0.0901 163.5)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Ledger Display",
+        "purpose": "Opening thesis and its emphasized proof word."
+      },
+      "headline": {
+        "displayName": "Chapter Headline",
+        "purpose": "Major chapter titles and large evidence statements."
+      },
+      "title": {
+        "displayName": "Record Title",
+        "purpose": "Catalog entries and compact proof objects."
+      },
+      "body": {
+        "displayName": "Explanatory Body",
+        "purpose": "Readable context between evidence objects."
+      },
+      "label": {
+        "displayName": "Proof Label",
+        "purpose": "Categories, controls, statuses, sources, and metadata."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "signal-scan",
+        "value": "2.8s cubic-bezier(0.16, 1, 0.3, 1) 350ms 1 both",
+        "purpose": "Runs the proof board's orange verification line once on load."
+      },
+      {
+        "name": "screen-zoom",
+        "value": "transform 500ms cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Scales linked screenshots to 1.025 on hover."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stack",
+        "value": "1000px"
+      },
+      {
+        "name": "mobile",
+        "value": "720px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Square orange action used for the highest-priority next step.",
+      "html": "<a class=\"ds-button-primary\" href=\"#\">Inspect the systems</a>",
+      "css": ".ds-button-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 11px 15px; background: var(--orange); border: 1px solid var(--orange); border-radius: 0; color: var(--ink); font-family: var(--mono); font-size: 12px; font-weight: 800; text-decoration: none; cursor: pointer; } .ds-button-primary:hover { background: var(--orange-dark); border-color: var(--orange-dark); } .ds-button-primary:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Square outlined action that reverses from paper to ink on hover.",
+      "html": "<a class=\"ds-button-secondary\" href=\"#\">See merged work</a>",
+      "css": ".ds-button-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 11px 15px; background: transparent; border: 1px solid var(--ink); border-radius: 0; color: var(--ink); font-family: var(--mono); font-size: 12px; font-weight: 800; text-decoration: none; cursor: pointer; } .ds-button-secondary:hover { background: var(--ink); color: var(--paper-bright); } .ds-button-secondary:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }"
+    },
+    {
+      "name": "Filter Control",
+      "kind": "chip",
+      "refersTo": "filter-control",
+      "description": "Uppercase square category filter with a filled pressed state.",
+      "html": "<button class=\"ds-filter-control\" type=\"button\" aria-pressed=\"true\">Systems</button>",
+      "css": ".ds-filter-control { min-height: 38px; padding: 8px 12px; background: transparent; border: 1px solid #565a55; border-radius: 0; color: #d5d7d1; font-family: var(--mono); font-size: 11px; font-weight: 800; text-transform: uppercase; cursor: pointer; } .ds-filter-control:hover, .ds-filter-control[aria-pressed=\"true\"] { background: var(--orange); border-color: var(--orange); color: var(--ink); } .ds-filter-control:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }"
+    },
+    {
+      "name": "Catalog Search",
+      "kind": "input",
+      "refersTo": "search-input",
+      "description": "Dark square search field with a compact proof-label caption.",
+      "html": "<label class=\"ds-search-control\"><span>Search the catalog</span><input type=\"search\" placeholder=\"Search systems, methods, industries\"></label>",
+      "css": ".ds-search-control { display: flex; flex-direction: column; gap: 7px; width: min(340px, 100%); color: #b7b9b3; font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; } .ds-search-control input { width: 100%; min-height: 40px; padding: 9px 12px; background: #1a1c1a; border: 1px solid #565a55; border-radius: 0; color: #fff; font-family: var(--sans); font-size: 14px; } .ds-search-control input::placeholder { color: #9fa19a; opacity: 1; } .ds-search-control input:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }"
+    },
+    {
+      "name": "Network Rail",
+      "kind": "nav",
+      "description": "Compact night navigation that marks the current Intent Solutions property in orange.",
+      "html": "<nav class=\"ds-network-rail\" aria-label=\"Intent Solutions network\"><a href=\"#\">Intent Solutions</a><a href=\"#\" aria-current=\"page\">Demos</a><a href=\"#\">Learn</a><a href=\"#\">OMA</a></nav>",
+      "css": ".ds-network-rail { display: flex; align-items: center; gap: 24px; min-height: 34px; padding: 0 24px; overflow-x: auto; background: var(--night); color: #e7e7e1; } .ds-network-rail a { flex: 0 0 auto; color: #b7b9b3; font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-decoration: none; text-transform: uppercase; } .ds-network-rail a:hover, .ds-network-rail a[aria-current=\"page\"] { color: var(--orange); } .ds-network-rail a:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }"
+    },
+    {
+      "name": "Public Proof Board",
+      "kind": "custom",
+      "description": "Ruled dark matrix of attributable metrics with a one-shot orange verification scan.",
+      "html": "<aside class=\"ds-signal-board\"><div class=\"ds-signal-heading\"><span>PUBLIC PROOF BOARD</span><span class=\"ds-signal-live\">VERIFIED</span></div><div class=\"ds-signal-grid\"><a href=\"#\"><strong>57.4K</strong><span>Skills.sh installs</span><small>live listing ↗</small></a><a href=\"#\"><strong>44</strong><span>external PRs merged</span><small>GitHub record ↗</small></a></div></aside>",
+      "css": ".ds-signal-board { position: relative; overflow: hidden; background: var(--night); border: 1px solid var(--night); color: #f1f1eb; } .ds-signal-board::after { position: absolute; top: 0; left: -35%; width: 32%; height: 2px; background: var(--orange); content: \"\"; animation: ds-signal-scan 2.8s cubic-bezier(0.16, 1, 0.3, 1) 350ms 1 both; } .ds-signal-heading { display: flex; justify-content: space-between; gap: 16px; padding: 16px 18px; border-bottom: 1px solid var(--line-dark); font-family: var(--mono); font-size: 11px; font-weight: 700; } .ds-signal-live { color: #b9d9c5; } .ds-signal-grid { display: grid; grid-template-columns: repeat(2, 1fr); } .ds-signal-grid a { display: flex; flex-direction: column; min-height: 158px; padding: 22px 20px; border-right: 1px solid var(--line-dark); color: inherit; text-decoration: none; } .ds-signal-grid a:last-child { border-right: 0; } .ds-signal-grid a:hover { background: var(--night-raised); } .ds-signal-grid strong { font-family: var(--mono); font-size: clamp(30px, 4vw, 48px); line-height: 1; font-variant-numeric: tabular-nums; } .ds-signal-grid span { margin-top: 10px; color: #d1d2cc; font-family: var(--sans); font-size: 13px; } .ds-signal-grid small { margin-top: auto; color: var(--orange); font-family: var(--mono); font-size: 11px; } .ds-signal-grid a:focus-visible { outline: 3px solid var(--orange); outline-offset: -4px; } @keyframes ds-signal-scan { from { transform: translateX(0); } to { transform: translateX(430%); } } @media (prefers-reduced-motion: reduce) { .ds-signal-board::after { animation-duration: 0.01ms; animation-iteration-count: 1; } }"
+    },
+    {
+      "name": "Catalog Ledger Row",
+      "kind": "card",
+      "description": "Three-column dark record that binds evidence type, system description, and destinations.",
+      "html": "<article class=\"ds-catalog-item\"><span class=\"ds-item-type\">Commerce system</span><div><h3>Longbox</h3><p>Photo-to-listing workflow for comic shops, with an inspectable route.</p></div><div class=\"ds-item-links\"><a href=\"#\">Open demo</a><a href=\"#\">Source</a></div></article>",
+      "css": ".ds-catalog-item { display: grid; grid-template-columns: 170px minmax(0, 1fr) minmax(150px, 230px); gap: 30px; align-items: start; padding: 26px 0; background: var(--night); border-bottom: 1px solid var(--line-dark); color: #fff; } .ds-item-type { color: var(--orange); font-family: var(--mono); font-size: 11px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; } .ds-catalog-item h3 { margin: 0; color: #fff; font-family: var(--mono); font-size: 21px; font-weight: 800; letter-spacing: -0.03em; } .ds-catalog-item p { max-width: 68ch; margin: 9px 0 0; color: #b9bbb5; font-family: var(--sans); font-size: 14px; } .ds-item-links { display: flex; flex-direction: column; align-items: flex-end; gap: 9px; text-align: right; } .ds-item-links a { color: #f3f3ed; font-family: var(--mono); font-size: 12px; font-weight: 800; text-underline-offset: 4px; } .ds-item-links a:hover { color: var(--orange-dark); } .ds-item-links a:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; } @media (max-width: 720px) { .ds-catalog-item { grid-template-columns: 1fr; gap: 10px; padding: 24px 0; } .ds-item-links { align-items: flex-start; flex-direction: row; flex-wrap: wrap; gap: 16px; text-align: left; } }"
+    },
+    {
+      "name": "Contact Field",
+      "kind": "input",
+      "refersTo": "form-input",
+      "description": "Square light field used in the outcome contact form.",
+      "html": "<label class=\"ds-form-field\"><span>Work email</span><input type=\"email\" placeholder=\"you@company.com\"></label>",
+      "css": ".ds-form-field { display: flex; flex-direction: column; gap: 7px; color: var(--ink-soft); font-family: var(--mono); font-size: 11px; font-weight: 700; text-transform: uppercase; } .ds-form-field input { width: 100%; min-height: 46px; padding: 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 0; color: var(--ink); font-family: var(--sans); font-size: 15px; } .ds-form-field input::placeholder { color: #77776f; opacity: 1; } .ds-form-field input:hover { border-color: #7b7b73; } .ds-form-field input:focus-visible { outline: 3px solid var(--orange); outline-offset: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Proof Ledger",
+    "overview": "The system combines Learn's editorial restraint with OMA's evidence-board discipline. It should feel like a public operating record: warm paper and near-black fields, hard dividers, mono-led headlines, dated facts, and controls that look ready to be used rather than admired.\n\nProof creates the visual hierarchy. Large numbers, source labels, ledger rows, and real screenshots carry the page; orange is a scarce signal for action, verification, and measured facts. The system rejects ornamental agency language, soft card grids, and decoration without evidentiary purpose.",
+    "keyCharacteristics": [
+      "Warm paper and near-black sections alternate to establish chapters.",
+      "JetBrains Mono carries proof, hierarchy, navigation, labels, and controls.",
+      "IBM Plex Sans keeps explanatory copy calm and readable.",
+      "One-pixel rules and square corners make every surface feel ledger-like.",
+      "Real screenshots and attributable metrics are the principal visual media."
+    ],
+    "rules": [
+      {
+        "name": "The Receipt Before Accent Rule",
+        "body": "Orange marks action, verification, or a measured fact; it never floods a page as decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono Carries Proof Rule",
+        "body": "JetBrains Mono carries headings, metrics, controls, labels, and links; IBM Plex Sans carries explanation.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Ledger Rule",
+        "body": "Surfaces are separated with tonal shifts and one-pixel rules; shadows are not part of the vocabulary.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Square Contract Rule",
+        "body": "Interactive controls, panels, fields, and cards use zero radius; circles are reserved for compact status indicators.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do lead with a concrete artifact, metric, source, or dated status.",
+      "Do alternate light and dark chapters to clarify the narrative sequence.",
+      "Do keep components square and separate them with one-pixel rules.",
+      "Do preserve the mono/sans division between proof language and explanation.",
+      "Do provide visible focus and a reduced-motion path for every interaction."
+    ],
+    "donts": [
+      "Don't turn the catalog into an undifferentiated grid of generic cards.",
+      "Don't use orange as an ambient background or decorative wash.",
+      "Don't add shadows, soft radii, glass cards, or ornamental illustration.",
+      "Don't present a metric without its source and date context.",
+      "Don't shrink dense evidence to preserve desktop columns on a narrow screen."
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+.impeccable/reference/
+.impeccable/review/
+.impeccable/demos-brief-body.md
+site/assets/screens/*.png
+__pycache__/
+*.pyc
