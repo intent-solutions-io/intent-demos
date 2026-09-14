@@ -27,6 +27,26 @@ def inspect_page(page, screenshot: Path) -> None:
     assert page.locator('a[href="https://labs.intentsolutions.io/"]').count() >= 1
     assert page.locator('a[href="https://evals.intentsolutions.io/"]').count() >= 1
 
+    previews = page.locator(".feature-screen img, .panel-screen img, .sibling-screen img, .product-grid img")
+    assert previews.count() == 8
+    for index in range(previews.count()):
+        image = previews.nth(index)
+        geometry = image.evaluate(
+            """element => ({
+                rendered: element.getBoundingClientRect().width / element.getBoundingClientRect().height,
+                natural: element.naturalWidth / element.naturalHeight,
+                fit: getComputedStyle(element).objectFit,
+            })"""
+        )
+        assert abs(geometry["rendered"] - geometry["natural"]) < 0.02, geometry
+        assert geometry["fit"] == "contain", geometry
+
+    preview_links = page.locator(".feature-screen, .panel-screen, .sibling-screen, .product-grid > a")
+    for index in range(preview_links.count()):
+        link = preview_links.nth(index)
+        assert link.get_attribute("target") == "_blank"
+        assert link.evaluate("element => getComputedStyle(element).touchAction") == "pan-y"
+
     page.get_by_role("button", name="Systems").click()
     assert page.locator(".catalog-item:visible").count() == 6
     assert page.locator("#filter-status").text_content() == "Showing 6 routes in system work."
@@ -39,6 +59,14 @@ def inspect_page(page, screenshot: Path) -> None:
     page.locator("#catalog-search").fill("")
     page.get_by_role("button", name="All work").click()
     assert page.locator(".catalog-item:visible").count() == 18
+
+    page.goto(f"{BASE_URL}/#catalog", wait_until="networkidle")
+    page.wait_for_function(
+        "document.querySelector('#catalog').getBoundingClientRect().top >= document.querySelector('.site-header').getBoundingClientRect().bottom"
+    )
+    catalog_top = page.locator("#catalog").evaluate("element => element.getBoundingClientRect().top")
+    header_bottom = page.locator(".site-header").evaluate("element => element.getBoundingClientRect().bottom")
+    assert catalog_top >= header_bottom, {"catalog_top": catalog_top, "header_bottom": header_bottom}
 
     page.locator("body").press("Tab")
     assert page.evaluate("document.activeElement !== document.body")
@@ -54,12 +82,21 @@ def main() -> None:
         inspect_page(desktop, REVIEW_DIR / "desktop.png")
         desktop.close()
 
+        tablet_context = browser.new_context(
+            viewport={"width": 1194, "height": 834},
+            device_scale_factor=1,
+            has_touch=True,
+        )
+        tablet = tablet_context.new_page()
+        inspect_page(tablet, REVIEW_DIR / "tablet-touch.png")
+        tablet_context.close()
+
         mobile = browser.new_page(viewport={"width": 390, "height": 844}, device_scale_factor=1)
         inspect_page(mobile, REVIEW_DIR / "mobile.png")
         mobile.close()
         browser.close()
 
-    print(f"Browser smoke passed at desktop and mobile; screenshots: {REVIEW_DIR}")
+    print(f"Browser smoke passed at desktop, touch tablet, and mobile; screenshots: {REVIEW_DIR}")
 
 
 if __name__ == "__main__":

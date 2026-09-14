@@ -70,6 +70,7 @@ def main() -> int:
     require(parser.has_canonical, "canonical URL is missing or incorrect", failures)
     require(parser.catalog_items == 18, f"expected 18 catalog routes, found {parser.catalog_items}", failures)
     require("n8n" not in html.lower(), "n8n appears in the catalog source", failures)
+    require("Why these 18 are here" in html, "catalog selection rubric is missing", failures)
 
     required_links = {
         "https://tonsofskills.com/",
