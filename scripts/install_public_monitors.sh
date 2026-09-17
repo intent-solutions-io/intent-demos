@@ -77,6 +77,7 @@ ExecStart=/bin/bash /usr/local/lib/intentsolutions/alert-floor.sh dispatch "$job
 TimeoutStartSec=60
 UMask=0077
 NoNewPrivileges=true
+PrivateTmp=true
 ProtectSystem=strict
 ProtectHome=true
 ReadWritePaths=/var/lib/$job
