@@ -126,6 +126,7 @@ def inspect_mission_control(page, screenshot: Path) -> None:
     page.reload(wait_until="networkidle")
     page.evaluate("snapshot.source.observed_at = new Date().toISOString().replace('Z', ''); updateFreshness()")
     assert page.locator(".freshness").get_attribute("data-state") == "stale"
+    page.reload(wait_until="networkidle")
     page.evaluate("snapshot.source.revision = null; updateFreshness()")
     assert page.locator(".freshness").get_attribute("data-state") == "stale"
     page.evaluate("snapshot = null; updateFreshness()")
