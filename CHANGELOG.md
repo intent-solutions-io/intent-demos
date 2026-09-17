@@ -15,3 +15,7 @@
 - Add bounded regional HTTPS/content/TLS diagnostics for both Tons of Skills hostnames.
   Missing country results and unavailable measurement infrastructure fail visibly; a
   successful cloud-probe sample does not claim every browser or ISP is healthy.
+
+- Production verification added independent Mission Control browser scope while preserving
+  unrelated live catalog additions. Regional diagnostic failures retain the country even
+  when the probe returns null TLS/body fields; these never become successful samples.

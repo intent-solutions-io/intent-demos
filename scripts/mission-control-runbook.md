@@ -114,6 +114,8 @@ captured `legacy-feed` directory; that is recovery of historical output, not fre
 python3 -m unittest discover -s scripts -p 'test_mission_control.py' -v
 python3 scripts/verify_site.py
 python3 scripts/browser_smoke.py
+# Independently published production MC, without asserting an unrelated catalog revision:
+DEMOS_BASE_URL=https://demos.intentsolutions.io python3 scripts/browser_smoke.py --mission-control-only
 ```
 
 The tests cover July HTTP200 stale output, bad/missing/future clocks, successful and failed

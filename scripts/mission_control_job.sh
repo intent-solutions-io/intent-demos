@@ -38,6 +38,7 @@ if [ "$result" -ne 0 ]; then
   fi
   subject="Mission Control public $mode failed"
   [ "$mode" != regional ] || subject="Tons of Skills regional HTTPS check failed or unverified"
+  subject="${MC_ALERT_PREFIX:+$MC_ALERT_PREFIX: }$subject"
   AF_BUZZ_TOPIC=sys-automation AF_HC_URL="" bash "$af_cli" dispatch \
     "$subject. Check the timestamped snapshot and installed job log." \
     "$subject" high sys-automation || {
