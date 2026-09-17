@@ -129,6 +129,24 @@ def inspect_mission_control(page, screenshot: Path) -> None:
     candidate = json.loads(json.dumps(candidate).replace(old, new))
     page.route("**/mission-control/manifest.json", lambda route: route.fulfill(json=candidate))
     page.route("**/mission-control/", lambda route: route.fulfill(body=body, content_type="text/html"))
+    # Invalid newer data must not poison the corrected publication's reload guard.
+    for field, value in [("revision", None), ("revision", [candidate["source"]["revision"]]), ("observed_at", None),
+                         ("observed_at", "2026-02-30T12:00:00Z"),
+                         ("observed_at", "2099-01-01T00:00:00Z")]:
+        invalid = json.loads(json.dumps(candidate))
+        invalid["source"][field] = value
+        page.unroute("**/mission-control/manifest.json")
+        page.route("**/mission-control/manifest.json", lambda route, request, data=invalid: route.fulfill(json=data))
+        page.evaluate("loadFreshness()")
+        assert page.evaluate("sessionStorage.getItem('intent-mc-reload-publication')") is None
+        assert page.locator("#published").text_content() == old
+        assert page.locator(".freshness").get_attribute("data-state") == "stale"
+    assert page.evaluate("Number.isNaN(parseClock('2026-02-30T12:00:00Z'))")
+    assert page.evaluate("Number.isNaN(parseClock('2026-09-31T12:00:00Z'))")
+    assert page.evaluate("Number.isNaN(parseClock('2026-09-17T24:00:00Z'))")
+    assert page.evaluate("Number.isFinite(parseClock('2024-02-29T12:00:00+02:00'))")
+    page.unroute("**/mission-control/manifest.json")
+    page.route("**/mission-control/manifest.json", lambda route: route.fulfill(json=candidate))
     with page.expect_navigation(wait_until="networkidle"):
         page.evaluate("setTimeout(loadFreshness, 0)")
     assert page.locator("#published").text_content() == new

@@ -27,3 +27,6 @@
 - Refresh already-open reports when a newer valid publication arrives, with a per-publication
   reload guard and honest fallback warning. Browser replay verifies the page timestamp and
   copy payload advance together; ordinary publication no longer leaves an old tab frozen.
+
+- Validate snapshot revisions and semantic zoned calendar timestamps before recording a
+  browser refresh attempt. A malformed newer manifest cannot block its corrected revision.
