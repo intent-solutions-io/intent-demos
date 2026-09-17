@@ -1009,6 +1009,12 @@ img {
   font-size: 12px;
 }
 
+#open-source h3 { margin: 36px 0 12px; }
+#open-source > p { max-width: 72ch; margin-bottom: 20px; }
+#open-source .upstream-ledger > * { color: var(--ink); border-color: var(--line); }
+#open-source .upstream-ledger strong { color: var(--orange-dark); }
+#open-source .upstream-ledger small { color: var(--muted); }
+
 .network-section {
   padding-block: 112px;
 }
