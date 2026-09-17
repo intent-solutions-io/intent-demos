@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mission Control public source inventory, recent website checks, and dated historical reports.">
+  <link rel="canonical" href="https://demos.intentsolutions.io/mission-control/">
+  <link rel="stylesheet" href="/mission-control/styles.css">
+  <title>Mission Control | Intent Solutions</title>
+</head>
+<body>
+  <main>
+    <nav><a href="/">← Intent Demos</a><span>Operations / Public reporting</span></nav>
+    <header>
+      <p class="eyebrow">Mission Control</p>
+      <h1>From a plan<br>to working foundations.</h1>
+      <p class="intro">Implementation is under way. This public feed tracks the source inventory and recent website checks. Private operational detail stays in the company console.</p>
+    </header>
+    <section class="freshness" aria-label="Snapshot freshness">
+      <p id="freshness-label" role="status">Point-in-time snapshot — checking its age…</p>
+      <dl><div><dt>Published · UTC</dt><dd id="published">{{PUBLISHED}}</dd></div><div><dt>Source last checked · UTC</dt><dd>{{SOURCE_CHECKED}}</dd></div></dl>
+      <p id="source-fetch">Source fetch: {{SOURCE_FETCH}}. Updates run every 15 minutes; after 45 minutes the snapshot is stale.</p>
+      <noscript>JavaScript is off. Compare these UTC timestamps with the current time; a timestamp older than 45 minutes is stale.</noscript>
+    </section>
+    <section aria-labelledby="inventory-title">
+      <div class="section-head"><h2 id="inventory-title">Source inventory</h2><a href="current.md">Read the current report ↗</a></div>
+      <p>These components exist in the reviewed source. This does not certify their deployment or phase completion.</p>
+      <div class="table-wrap"><table><thead><tr><th>Component</th><th>Implementation</th></tr></thead><tbody>{{COMPONENT_ROWS}}</tbody></table></div>
+    </section>
+    <section aria-labelledby="websites-title">
+      <h2 id="websites-title">Recent website checks</h2>
+      <p>Endpoint reachability and basic response checks from one location. Game-data freshness, internal dependency health, and worldwide access are separate checks.</p>
+      <div class="table-wrap"><table><thead><tr><th>Website</th><th>Result</th><th>Checked · UTC</th></tr></thead><tbody>{{SERVICE_ROWS}}</tbody></table></div>
+    </section>
+    <section class="handoff" aria-labelledby="handoff-title">
+      <h2 id="handoff-title">Share the current state</h2>
+      <p>A short, timestamped digest for a teammate or an AI session.</p>
+      <button type="button" id="copy-current">Copy dated snapshot</button><span id="copy-result" role="status"></span>
+      <p><a href="current.md">Plain markdown</a> · <a href="manifest.json">Machine-readable timestamps</a> · <a href="llms.txt">Agent index</a></p>
+      <textarea id="digest" readonly aria-label="Current public snapshot" hidden>{{DIGEST}}</textarea>
+    </section>
+    <section aria-labelledby="archive-title">
+      <h2 id="archive-title">Historical reports · July 11, 2026</h2>
+      <p>The original design and standards are preserved in public copies below; operational details have been redacted and originals retained privately. Their “0% built” statements describe July 11, not today. Historical documents can also contain decisions superseded since publication.</p>
+      <details><summary>Browse the 11 historical reports</summary><ul>{{ARCHIVE_LINKS}}</ul></details>
+      <p><a href="all-reports.md">Current snapshot and labeled historical bundle</a></p>
+    </section>
+    <footer><a href="/">Intent Demos</a><span>Source revision <code>{{SOURCE_REVISION}}</code></span></footer>
+  </main>
+  <script src="/mission-control/app.js" defer></script>
+</body>
+</html>
