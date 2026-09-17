@@ -125,3 +125,7 @@ fetch clocks, private-text non-export, equivalent human/copy/machine artifacts, 
 HTTP200 bodies, timeouts, migration, republish/restart, abandoned candidates and failed
 build preservation. Browser smoke covers desktop/mobile layout and visible stale/unknown
 states. Runtime receipts and deployment evidence live in the tracked incident bead.
+
+The browser uses shared strict revision/calendar validation before both freshness evaluation
+and recording a reload attempt; missing or impossible source clocks leave the guard untouched
+so a corrected manifest with the same publication can recover.
