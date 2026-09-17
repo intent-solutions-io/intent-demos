@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import os
 from pathlib import Path
 
@@ -75,11 +76,15 @@ def inspect_page(page, screenshot: Path) -> None:
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--mission-control-only", action="store_true", help="Check the independently published Mission Control surface")
+    args = parser.parse_args()
     REVIEW_DIR.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, executable_path=BROWSER_EXECUTABLE)
         desktop = browser.new_page(viewport={"width": 1440, "height": 900}, device_scale_factor=1)
-        inspect_page(desktop, REVIEW_DIR / "desktop.png")
+        if not args.mission_control_only:
+            inspect_page(desktop, REVIEW_DIR / "desktop.png")
         inspect_mission_control(desktop, REVIEW_DIR / "mission-control-desktop.png")
         desktop.close()
 
@@ -89,11 +94,14 @@ def main() -> None:
             has_touch=True,
         )
         tablet = tablet_context.new_page()
-        inspect_page(tablet, REVIEW_DIR / "tablet-touch.png")
+        if not args.mission_control_only:
+            inspect_page(tablet, REVIEW_DIR / "tablet-touch.png")
+        inspect_mission_control(tablet, REVIEW_DIR / "mission-control-tablet.png")
         tablet_context.close()
 
         mobile = browser.new_page(viewport={"width": 390, "height": 844}, device_scale_factor=1)
-        inspect_page(mobile, REVIEW_DIR / "mobile.png")
+        if not args.mission_control_only:
+            inspect_page(mobile, REVIEW_DIR / "mobile.png")
         inspect_mission_control(mobile, REVIEW_DIR / "mission-control-mobile.png")
         mobile.close()
         browser.close()

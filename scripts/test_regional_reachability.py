@@ -14,6 +14,14 @@ class RegionalTests(unittest.TestCase):
                       [{"probe": {"country": []}, "result": {"tls": [], "rawBody": []}}]]:
             self.assertFalse(evaluate({"status": "finished", "results": value}, ["DE"])["ok"])
 
+    def test_native_probe_failure_retains_country_without_false_success(self):
+        data = fixture()
+        data["results"][0]["result"] = {"status": "failed", "tls": None, "rawBody": None, "statusCode": None}
+        result = evaluate(data, ["DE"])
+        self.assertFalse(result["ok"])
+        self.assertEqual(result["results"][0]["country"], "DE")
+        self.assertEqual(result["results"][0]["state"], "failed_or_unverified")
+
     def test_complete_success(self):
         self.assertTrue(evaluate(fixture(), ["DE"])["ok"])
 

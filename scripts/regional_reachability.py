@@ -30,8 +30,8 @@ def evaluate(measurement, expected=COUNTRIES):
     for item in results:
         if (not isinstance(item, dict) or not isinstance(item.get("probe"), dict)
                 or not isinstance(item.get("result"), dict)
-                or not isinstance(item["result"].get("tls"), dict)
-                or not isinstance(item["result"].get("rawBody"), str)
+                or (item["result"].get("tls") is not None and not isinstance(item["result"].get("tls"), dict))
+                or (item["result"].get("rawBody") is not None and not isinstance(item["result"].get("rawBody"), str))
                 or not isinstance(item["probe"].get("country"), str)):
             errors.append("malformed country result")
             continue
@@ -41,10 +41,10 @@ def evaluate(measurement, expected=COUNTRIES):
             errors.append("duplicate country result")
         seen.add(country)
         passed = (result.get("status") == "finished" and result.get("statusCode") == 200
-                  and result.get("tls", {}).get("authorized") is True
-                  and "tons of skills" in result.get("rawBody", "").lower())
+                  and (result.get("tls") or {}).get("authorized") is True
+                  and "tons of skills" in (result.get("rawBody") or "").lower())
         rows.append({"country": country, "http_status": result.get("statusCode"),
-                     "tls_trusted": result.get("tls", {}).get("authorized") is True,
+                     "tls_trusted": (result.get("tls") or {}).get("authorized") is True,
                      "state": "reachable" if passed else "failed_or_unverified"})
         if not passed:
             errors.append(f"{country}: HTTPS/content check failed")
