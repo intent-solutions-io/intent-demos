@@ -66,8 +66,8 @@ code is root-owned and digest-verified. The installer references the existing pr
 company notifier environment, never prints it or copies it into the artifact.
 
 Failures use the existing governed `sys-automation` transport. A bad sample returns1
-only after accepted alert dispatch; transport or integrity errors return2 and trigger a
-separate native execution-failure alert. Native timeouts likewise trigger failure alerting.
+only after accepted alert dispatch or explicit previously-delivered duplicate receipt; transport or integrity errors return2 and trigger a
+separate critical native execution-failure alert, with its own writable private temporary directory. Native timeouts likewise trigger failure alerting.
 Missing country probes, Globalping outages and rate limits are unverified failures, not
 proof of product outage. Regional checks cover cloud probes of the homepage, not every
 ISP, browser or deep link. The routine16probes/hour are below the documented

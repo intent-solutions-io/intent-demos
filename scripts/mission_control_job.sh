@@ -39,11 +39,17 @@ if [ "$result" -ne 0 ]; then
   subject="Mission Control public $mode failed"
   [ "$mode" != regional ] || subject="Tons of Skills regional HTTPS check failed or unverified"
   subject="${MC_ALERT_PREFIX:+$MC_ALERT_PREFIX: }$subject"
+  set +e
   AF_BUZZ_TOPIC=sys-automation AF_HC_URL="" bash "$af_cli" dispatch \
     "$subject. Check the timestamped snapshot and installed job log." \
-    "$subject" high sys-automation || {
-      echo "Governed alert receipt failed; transport owns its durable spool" >&2
-      exit 2
-    }
+    "$subject" high sys-automation
+  alert_result=$?
+  set -e
+  # AF code5 is an explicit duplicate of a previously delivered alert; preserve
+  # its receipt and avoid turning deduplication into an execution-failure page.
+  if [ "$alert_result" != 0 ] && [ "$alert_result" != 5 ]; then
+    echo "Governed alert receipt failed; transport owns its durable spool" >&2
+    exit 2
+  fi
 fi
 exit "$result"

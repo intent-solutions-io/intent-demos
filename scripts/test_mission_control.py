@@ -3,6 +3,7 @@
 
 import datetime as dt
 import json
+import os
 from pathlib import Path
 import subprocess
 import tempfile
@@ -23,6 +24,20 @@ def fixture():
 
 
 class SnapshotTests(unittest.TestCase):
+    def test_job_product_failure_transport_failure_and_delivered_duplicate(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp); tools = base / "bin"; tools.mkdir()
+            python = tools / "python3"; python.write_text("#!/bin/sh\nexit 1\n"); python.chmod(0o755)
+            floor = base / "floor.sh"
+            for receipt, expected in [(0, 1), (5, 1), (3, 2), (None, 2)]:
+                floor.write_text(f"#!/bin/sh\nexit {receipt or 0}\n")
+                env = {**os.environ, "PATH": str(tools) + ":" + os.environ["PATH"],
+                       "MC_JOB_STATE": str(base / "state"),
+                       "MC_ALERT_FLOOR": str(floor if receipt is not None else base / "absent")}
+                result = subprocess.run(["bash", str(mc.ROOT / "scripts/mission_control_job.sh"), "check"],
+                                        env=env, capture_output=True, text=True)
+                self.assertEqual(result.returncode, expected, result.stderr)
+
     def test_july_snapshot_is_stale_despite_http_200(self):
         data = fixture()
         data["published_at"] = "2026-07-11T15:49:17Z"

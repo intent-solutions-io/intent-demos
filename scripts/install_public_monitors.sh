@@ -73,7 +73,8 @@ Environment=AF_BUZZ_CMD=/usr/local/lib/intentsolutions/buzz-notify.sh
 Environment=BUZZ_NOTIFY_BIN=/usr/local/bin/buzz
 Environment=AF_HC_URL=
 EnvironmentFile=$credentials
-ExecStart=/bin/bash /usr/local/lib/intentsolutions/alert-floor.sh dispatch "$job execution or alert delivery failed" "$job monitor failure" high sys-automation
+ExecStart=/bin/bash /usr/local/lib/intentsolutions/alert-floor.sh dispatch "$job execution or alert delivery failed" "$job monitor failure" critical sys-automation
+SuccessExitStatus=5
 TimeoutStartSec=60
 UMask=0077
 NoNewPrivileges=true
