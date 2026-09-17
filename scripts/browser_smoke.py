@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import argparse
+import datetime as dt
+import json
 import os
 from pathlib import Path
 
@@ -119,6 +121,61 @@ def inspect_mission_control(page, screenshot: Path) -> None:
     assert page.locator("#digest").input_value().startswith("# Mission Control — current public snapshot")
     assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
     page.screenshot(path=str(screenshot), full_page=True)
+    # A normal newer publication must refresh the open page and copied report.
+    candidate = page.evaluate("JSON.parse(JSON.stringify(snapshot))")
+    old = candidate["published_at"]
+    new = (dt.datetime.fromisoformat(old.replace("Z", "+00:00")) + dt.timedelta(seconds=1)).isoformat(timespec="seconds").replace("+00:00", "Z")
+    body = page.content().replace(old, new)
+    candidate = json.loads(json.dumps(candidate).replace(old, new))
+    page.route("**/mission-control/manifest.json", lambda route: route.fulfill(json=candidate))
+    page.route("**/mission-control/", lambda route: route.fulfill(body=body, content_type="text/html"))
+    with page.expect_navigation(wait_until="networkidle"):
+        page.evaluate("setTimeout(loadFreshness, 0)")
+    assert page.locator("#published").text_content() == new
+    assert new in page.locator("#digest").input_value()
+    assert page.locator(".freshness").get_attribute("data-state") == "fresh"
+    # A recent older manifest must not navigate to or relabel an old publication.
+    navigations = []
+    def record_navigation(frame):
+        if frame == page.main_frame:
+            navigations.append(frame.url)
+    page.on("framenavigated", record_navigation)
+    older = json.loads(json.dumps(candidate).replace(new, old))
+    page.unroute("**/mission-control/manifest.json")
+    page.route("**/mission-control/manifest.json", lambda route: route.fulfill(json=older))
+    page.evaluate("loadFreshness()")
+    assert not navigations
+    assert page.locator("#published").text_content() == new
+    assert page.locator(".freshness").get_attribute("data-state") == "stale"
+    # A server/cache that retains old HTML gets only one reload per candidate.
+    later = (dt.datetime.fromisoformat(new.replace("Z", "+00:00")) + dt.timedelta(seconds=1)).isoformat(timespec="seconds").replace("+00:00", "Z")
+    repeated = json.loads(json.dumps(candidate).replace(new, later))
+    page.unroute("**/mission-control/manifest.json")
+    page.unroute("**/mission-control/")
+    page.route("**/mission-control/manifest.json", lambda route: route.fulfill(json=repeated))
+    page.route("**/mission-control/", lambda route: route.fulfill(body=body.replace(new, old), content_type="text/html"))
+    with page.expect_navigation(wait_until="networkidle"):
+        page.evaluate("setTimeout(loadFreshness, 0)")
+    assert len(navigations) == 1
+    assert page.locator("#published").text_content() == old
+    assert page.locator(".freshness").get_attribute("data-state") == "stale"
+    page.evaluate("loadFreshness()")
+    assert len(navigations) == 1
+    # Alternating older/newer caches cannot reset the attempted-publication guard.
+    page.unroute("**/mission-control/manifest.json")
+    page.route("**/mission-control/manifest.json", lambda route: route.fulfill(json=candidate))
+    page.evaluate("loadFreshness()")
+    assert len(navigations) == 1
+    assert page.locator(".freshness").get_attribute("data-state") == "stale"
+    page.unroute("**/mission-control/manifest.json")
+    page.route("**/mission-control/manifest.json", lambda route: route.fulfill(json=repeated))
+    page.evaluate("loadFreshness()")
+    assert len(navigations) == 1
+    page.remove_listener("framenavigated", record_navigation)
+    page.unroute("**/mission-control/manifest.json")
+    page.unroute("**/mission-control/")
+    page.evaluate("sessionStorage.removeItem('intent-mc-reload-publication')")
+    page.reload(wait_until="networkidle")
     # Regression: an HTTP200 snapshot from July must become visibly stale.
     page.evaluate("snapshot.published_at = '2026-07-11T15:49:17Z'; updateFreshness()")
     assert page.locator(".freshness").get_attribute("data-state") == "stale"

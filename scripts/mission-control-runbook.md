@@ -30,7 +30,9 @@ observation clock and publishes `unavailable`; it never restamps old source as c
 Publication and source observation older than45minutes are stale. Missing, malformed or
 future timestamps and mismatched HTML/manifest revisions fail the outside-in check.
 The browser checks the same45minute window and warns when the snapshot cannot be verified.
-Old browser tabs are warned when a newly published manifest differs from their page.
+An open browser report reloads once when a newer valid publication is available, updating
+its page and copy payload. A monotonic attempted-publication session guard prevents reload loops and cache rollback; storage
+or verification failure retains the explicit unverified warning.
 
 Publication takes a kernel-released lock, builds and validates a complete release, then
 atomically replaces the served symlink. An interrupted owned candidate is recoverable.
