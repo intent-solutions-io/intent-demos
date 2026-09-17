@@ -80,6 +80,7 @@ def main() -> None:
         browser = playwright.chromium.launch(headless=True, executable_path=BROWSER_EXECUTABLE)
         desktop = browser.new_page(viewport={"width": 1440, "height": 900}, device_scale_factor=1)
         inspect_page(desktop, REVIEW_DIR / "desktop.png")
+        inspect_mission_control(desktop, REVIEW_DIR / "mission-control-desktop.png")
         desktop.close()
 
         tablet_context = browser.new_context(
@@ -93,10 +94,33 @@ def main() -> None:
 
         mobile = browser.new_page(viewport={"width": 390, "height": 844}, device_scale_factor=1)
         inspect_page(mobile, REVIEW_DIR / "mobile.png")
+        inspect_mission_control(mobile, REVIEW_DIR / "mission-control-mobile.png")
         mobile.close()
         browser.close()
 
     print(f"Browser smoke passed at desktop, touch tablet, and mobile; screenshots: {REVIEW_DIR}")
+
+
+def inspect_mission_control(page, screenshot: Path) -> None:
+    errors = []
+    page.on("pageerror", lambda error: errors.append(str(error)))
+    page.goto(f"{BASE_URL}/mission-control/", wait_until="networkidle")
+    assert page.get_by_role("heading", name="Source inventory").is_visible()
+    assert page.get_by_role("heading", name="Historical reports · July 11, 2026").is_visible()
+    assert page.locator(".freshness").get_attribute("data-state") == "fresh"
+    assert page.locator("#digest").input_value().startswith("# Mission Control — current public snapshot")
+    assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+    page.screenshot(path=str(screenshot), full_page=True)
+    # Regression: an HTTP200 snapshot from July must become visibly stale.
+    page.evaluate("snapshot.published_at = '2026-07-11T15:49:17Z'; updateFreshness()")
+    assert page.locator(".freshness").get_attribute("data-state") == "stale"
+    assert "Stale" in page.locator("#freshness-label").text_content()
+    page.reload(wait_until="networkidle")
+    page.evaluate("snapshot.source.revision = null; updateFreshness()")
+    assert page.locator(".freshness").get_attribute("data-state") == "stale"
+    page.evaluate("snapshot = null; updateFreshness()")
+    assert page.locator(".freshness").get_attribute("data-state") == "stale"
+    assert not errors, errors
 
 
 if __name__ == "__main__":

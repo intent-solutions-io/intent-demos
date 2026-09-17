@@ -26,3 +26,18 @@ An entry must have a working public route, an inspectable artifact or evidence t
 ## Deployment
 
 `scripts/deploy_local.sh` copies only the versioned catalog files into `/home/jeremy/demos`. It deliberately does not delete or replace the independently managed demo directories already served there.
+
+## Mission Control public feed
+
+The catalog repository also owns the public Mission Control projection under
+`site/mission-control/` and its installed publisher. This is a deliberately bounded
+exception to the independently managed demo directories. See
+[the publishing and recovery runbook](scripts/mission-control-runbook.md).
+
+```bash
+python -m unittest discover -s scripts -p 'test_mission_control.py' -v
+```
+
+Browser smoke checks need a generated Mission Control snapshot rather than the unexpanded
+source template. Serve a preview assembled with `mission_control.build_release`, or set
+`DEMOS_BASE_URL=https://demos.intentsolutions.io` for the deployed-site verification.
