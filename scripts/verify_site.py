@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import os
+import json
 import sys
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
@@ -71,6 +72,15 @@ def main() -> int:
     require(parser.catalog_items == 18, f"expected 18 catalog routes, found {parser.catalog_items}", failures)
     require("n8n" not in html.lower(), "n8n appears in the catalog source", failures)
     require("Why these 18 are here" in html, "catalog selection rubric is missing", failures)
+    evidence = json.loads((SITE_ROOT / "assets" / "project-evidence.json").read_text())
+    require(len(evidence["personal"]) == 5, "expected five ranked personal source projects", failures)
+    require(len(evidence["organization"]) == 6, "expected six organization source projects", failures)
+    require(evidence["observed_on"] == "2026-09-17", "source snapshot date changed without review", failures)
+    for project in evidence["personal"] + evidence["organization"]:
+        require(project["html_url"] in parser.hrefs, f"missing source project: {project['name']}", failures)
+    for project in evidence["personal"]:
+        require(f'{project["stargazers_count"]:,} stars' in html, f"star count drift: {project['name']}", failures)
+    require("Stars show public interest, not customers" in html, "metric limitations missing", failures)
 
     required_links = {
         "https://tonsofskills.com/",

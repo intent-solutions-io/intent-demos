@@ -1,0 +1,83 @@
+{
+  "observed_on": "2026-09-17",
+  "selection": "Five most-starred non-fork, non-archived public personal repositories at observation time; six public organization projects selected for distinct roles. Stars indicate public interest, not customers, revenue, quality or completed evaluations.",
+  "sources": [
+    "https://api.github.com/users/jeremylongshore/repos?type=owner&per_page=100",
+    "https://api.github.com/orgs/intent-solutions-io/repos?type=public&per_page=100"
+  ],
+  "personal": [
+    {
+      "forks_count": 402,
+      "html_url": "https://github.com/jeremylongshore/tons-of-skills-marketplace",
+      "name": "tons-of-skills-marketplace",
+      "pushed_at": "2026-09-17T01:29:14Z",
+      "stargazers_count": 2773
+    },
+    {
+      "forks_count": 5,
+      "html_url": "https://github.com/jeremylongshore/excel-analyst-pro-skill-md",
+      "name": "excel-analyst-pro-skill-md",
+      "pushed_at": "2026-09-09T12:02:15Z",
+      "stargazers_count": 58
+    },
+    {
+      "forks_count": 30,
+      "html_url": "https://github.com/jeremylongshore/claude-code-slack-channel",
+      "name": "claude-code-slack-channel",
+      "pushed_at": "2026-09-14T11:10:33Z",
+      "stargazers_count": 39
+    },
+    {
+      "forks_count": 11,
+      "html_url": "https://github.com/jeremylongshore/cad-ai-agent",
+      "name": "cad-ai-agent",
+      "pushed_at": "2026-09-11T06:37:48Z",
+      "stargazers_count": 36
+    },
+    {
+      "forks_count": 4,
+      "html_url": "https://github.com/jeremylongshore/gastown-viewer-intent",
+      "name": "gastown-viewer-intent",
+      "pushed_at": "2026-08-25T20:07:31Z",
+      "stargazers_count": 31
+    }
+  ],
+  "organization": [
+    {
+      "description": "Wild ecosystem umbrella for docs, governance, audits, and migration. Active runtime: one consolidated pre-release Rails engine at jeremylongshore/wild with ten namespaces.",
+      "html_url": "https://github.com/intent-solutions-io/wild-rails-ai-ops",
+      "name": "wild-rails-ai-ops",
+      "pushed_at": "2026-09-15T03:01:29Z"
+    },
+    {
+      "description": "On-chain guardrails for AI agents — EIP-7702 spend limits, cryptographic execution receipts, automated dispute resolution. Org landing; live work at jeremylongshore/irsb.",
+      "html_url": "https://github.com/intent-solutions-io/irsb",
+      "name": "irsb",
+      "pushed_at": "2026-08-25T20:09:02Z"
+    },
+    {
+      "description": "Bob's Big Brain — the governed team brain: cited recall, hash-chained receipts. Local-first, citation-backed, with a tamper-evident audit trail. Compile, then govern; local by default, remote sharing opt-in. Umbrella for ICO + INTKB + qmd + the plugin.",
+      "html_url": "https://github.com/intent-solutions-io/bobs-big-brain-umbrella",
+      "name": "bobs-big-brain-umbrella",
+      "pushed_at": "2026-09-14T11:02:01Z"
+    },
+    {
+      "description": "Umbrella for the Intent Eval Platform — audit-first AI evaluation across 6 composable Apache-2.0 repos. Measure the behavior, sign the result, gate the ship.",
+      "html_url": "https://github.com/intent-solutions-io/intent-eval-platform",
+      "name": "intent-eval-platform",
+      "pushed_at": "2026-09-05T02:00:35Z"
+    },
+    {
+      "description": "Go / CloudWeGo Eino runtime of the Intent Agent Model (IAM = Intent Agent Model, not Identity and Access Management). A governed local coding agent: policy + approval + independent verification + content-safe hash-chained evidence around Eino's agent loop.",
+      "html_url": "https://github.com/intent-solutions-io/iam-bob-eino",
+      "name": "iam-bob-eino",
+      "pushed_at": "2026-08-25T20:09:12Z"
+    },
+    {
+      "description": "Intent Solutions Omarchy Plugin Works: 16 public plugins, official marketplace status, source, screenshots, install commands, and one permanent page per plugin.",
+      "html_url": "https://github.com/intent-solutions-io/omarchy-plugins",
+      "name": "omarchy-plugins",
+      "pushed_at": "2026-09-17T17:04:01Z"
+    }
+  ]
+}
