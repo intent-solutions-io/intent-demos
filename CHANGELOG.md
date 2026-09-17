@@ -19,3 +19,7 @@
 - Production verification added independent Mission Control browser scope while preserving
   unrelated live catalog additions. Regional diagnostic failures retain the country even
   when the probe returns null TLS/body fields; these never become successful samples.
+
+- Native synthetic stale checks proved accepted alert delivery. Harden execution-failure
+  services with a writable private temporary directory required by the governed notifier.
+  Browser freshness also refuses timestamps without an explicit timezone.

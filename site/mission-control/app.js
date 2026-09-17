@@ -12,7 +12,7 @@ function updateFreshness() {
     !/^[0-9a-f]{40}$/.test(snapshot.source?.revision ?? '') ||
     snapshot.published_at !== publication || clocks.some(clock => {
       const value = Date.parse(clock);
-      return !Number.isFinite(value) || now - value > 2700000 || value - now > 120000;
+      return typeof clock !== 'string' || !/(Z|[+-]\d{2}:\d{2})$/.test(clock) || !Number.isFinite(value) || now - value > 2700000 || value - now > 120000;
     });
   panel.dataset.state = stale ? 'stale' : 'fresh';
   label.textContent = stale ? 'Stale or unverified snapshot — check the timestamps below.' : 'Recent snapshot · refreshed automatically every 15 minutes';
