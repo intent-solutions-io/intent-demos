@@ -23,3 +23,7 @@
 - Native synthetic stale checks proved accepted alert delivery. Harden execution-failure
   services with a writable private temporary directory required by the governed notifier.
   Browser freshness also refuses timestamps without an explicit timezone.
+
+- Refresh already-open reports when a newer valid publication arrives, with a per-publication
+  reload guard and honest fallback warning. Browser replay verifies the page timestamp and
+  copy payload advance together; ordinary publication no longer leaves an old tab frozen.

@@ -26,6 +26,29 @@ async function loadFreshness() {
   } catch (error) {
     snapshot = null;
   }
+  // An ordinary new publication should update an already-open report rather
+  // than look like a stalled pipeline. Attempt at most one reload per revision.
+  const next = snapshot?.published_at;
+  const clock = typeof next === 'string' ? Date.parse(next) : NaN;
+  const age = Date.now() - clock;
+  const pageClock = Date.parse(publication);
+  const pageClockValid = /(Z|[+-]\d{2}:\d{2})$/.test(publication) &&
+    Number.isFinite(pageClock) && Date.now() - pageClock >= -120000;
+  if (snapshot?.schema_version === 1 && (!pageClockValid || clock > pageClock) &&
+      typeof next === 'string' && /(Z|[+-]\d{2}:\d{2})$/.test(next) &&
+      Number.isFinite(clock) && age >= -120000 && age <= 2700000 &&
+      ['ok', 'unavailable'].includes(snapshot.source?.fetch_status)) {
+    try {
+      const attemptedClock = Date.parse(sessionStorage.getItem('intent-mc-reload-publication') ?? '');
+      if (!Number.isFinite(attemptedClock) || clock > attemptedClock) {
+        sessionStorage.setItem('intent-mc-reload-publication', next);
+        window.location.reload();
+        return;
+      }
+    } catch (error) {
+      snapshot = null; // Storage unavailable: retain the honest unverified label.
+    }
+  }
   updateFreshness();
 }
 
