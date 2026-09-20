@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import os
 import json
+import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
@@ -94,12 +95,29 @@ def main() -> int:
     missing_links = sorted(required_links.difference(parser.hrefs))
     require(not missing_links, f"required proof/network links missing: {missing_links}", failures)
 
+    # The top network strip is vendored from intent-solutions-landing/estate-bar.
+    # The canonical checker verifies the vendored files against their manifest and
+    # that the page carries exactly the canonical demos bar: labels, order, hrefs.
+    vendor = SITE_ROOT / "assets" / "estate-bar"
+    bar_check = subprocess.run(
+        [sys.executable, str(vendor / "check_estate_bar.py"), "--site", "demos",
+         "--vendor", str(vendor), str(SITE_ROOT / "index.html")],
+        capture_output=True, text=True, check=False,
+    )
+    require(bar_check.returncode == 0, f"estate bar drift: {bar_check.stderr.strip()}", failures)
+    require("/assets/estate-bar/estate-bar.css" in html, "estate bar stylesheet is not linked", failures)
+    require("/assets/estate-accent.css" in html, "estate bar accent stylesheet is not linked", failures)
+
     local_demo_hrefs = sorted(
         href for href in set(parser.hrefs)
         if href.startswith("/") and not href.startswith("/assets/") and href != "/"
     )
-    for href in local_demo_hrefs:
-        require(route_target(href).is_file(), f"deployed route target missing for {href}", failures)
+    # The demo folders are served from the deploy root and are not in this repo,
+    # so CI cannot see them. Say so rather than pass silently or fail falsely.
+    deployed_routes_checked = DEPLOY_ROOT.is_dir()
+    if deployed_routes_checked:
+        for href in local_demo_hrefs:
+            require(route_target(href).is_file(), f"deployed route target missing for {href}", failures)
 
     for asset in sorted(set(parser.assets)):
         if asset.startswith("/"):
@@ -128,6 +146,8 @@ def main() -> int:
         return 1
 
     print(f"Verified: {parser.catalog_items} catalog routes, {len(screens)} screenshots, {len(sitemap_urls)} sitemap URLs.")
+    if not deployed_routes_checked:
+        print(f"NOTE: deploy root {DEPLOY_ROOT} is absent; deployed route targets were NOT checked.")
     return 0
 
 
