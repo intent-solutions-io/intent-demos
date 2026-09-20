@@ -1,0 +1,3 @@
+/* Demos accent for the vendored estate bar. The bar itself lives in
+   /assets/estate-bar/ and must not be edited; this is the one permitted override. */
+.is-estate-bar { --estate-accent: #f05a28; }
