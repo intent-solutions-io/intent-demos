@@ -1,3 +1,11 @@
 /* Demos accent for the vendored estate bar. The bar itself lives in
    /assets/estate-bar/ and must not be edited; this is the one permitted override. */
 .is-estate-bar { --estate-accent: #f05a28; }
+
+/* The standalone legal pages pad <body> (40px 24px). Pull the bar back out so it
+   runs full width and flush to the top, as it does everywhere else. Opt in with
+   <body class="estate-bar-bleed">. */
+body.estate-bar-bleed > .is-estate-bar {
+  width: calc(100% + 48px);
+  margin: -40px -24px 40px;
+}
