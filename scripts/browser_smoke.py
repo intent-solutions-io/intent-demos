@@ -24,8 +24,8 @@ def inspect_page(page, screenshot: Path) -> None:
     page.goto(BASE_URL, wait_until="networkidle")
     page.locator("#hero-title").wait_for(state="visible")
 
-    assert page.locator(".catalog-item").count() == 18
-    assert page.locator(".catalog-item:visible").count() == 18
+    assert page.locator(".catalog-item").count() == 19
+    assert page.locator(".catalog-item:visible").count() == 19
     assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
     assert page.locator('a[href="https://labs.intentsolutions.io/"]').count() >= 1
     assert page.locator('a[href="https://evals.intentsolutions.io/"]').count() >= 1
@@ -51,8 +51,8 @@ def inspect_page(page, screenshot: Path) -> None:
         assert link.evaluate("element => getComputedStyle(element).touchAction") == "pan-y"
 
     page.get_by_role("button", name="Systems").click()
-    assert page.locator(".catalog-item:visible").count() == 6
-    assert page.locator("#filter-status").text_content() == "Showing 6 routes in system work."
+    assert page.locator(".catalog-item:visible").count() == 7
+    assert page.locator("#filter-status").text_content() == "Showing 7 routes in system work."
 
     page.locator("#catalog-search").fill("CAD")
     assert page.locator(".catalog-item:visible").count() == 1
@@ -61,7 +61,16 @@ def inspect_page(page, screenshot: Path) -> None:
     page.get_by_role("button", name="Show all work").click() if page.locator("#empty-state:visible").count() else None
     page.locator("#catalog-search").fill("")
     page.get_by_role("button", name="All work").click()
-    assert page.locator(".catalog-item:visible").count() == 18
+    assert page.locator(".catalog-item:visible").count() == 19
+
+    page.goto(f"{BASE_URL}/searchcarriers/", wait_until="networkidle")
+    assert page.get_by_role("heading", name="Carrier research that ends in an auditable next action.").is_visible()
+    assert page.locator(".sc-skill").count() == 26
+    assert page.locator(".sc-skill:visible").count() == 26
+    page.get_by_role("button", name="MCP plugins").click()
+    assert page.locator(".sc-skill:visible").count() == 5
+    assert page.locator("#skill-count").text_content() == "5"
+    assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
 
     page.goto(f"{BASE_URL}/#catalog", wait_until="networkidle")
     page.wait_for_function(
@@ -79,7 +88,9 @@ def inspect_page(page, screenshot: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--mission-control-only", action="store_true", help="Check the independently published Mission Control surface")
+    scope = parser.add_mutually_exclusive_group()
+    scope.add_argument("--mission-control-only", action="store_true", help="Check the independently published Mission Control surface")
+    scope.add_argument("--catalog-only", action="store_true", help="Check the catalog and repository-owned demo routes without Mission Control")
     args = parser.parse_args()
     REVIEW_DIR.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as playwright:
@@ -87,7 +98,8 @@ def main() -> None:
         desktop = browser.new_page(viewport={"width": 1440, "height": 900}, device_scale_factor=1)
         if not args.mission_control_only:
             inspect_page(desktop, REVIEW_DIR / "desktop.png")
-        inspect_mission_control(desktop, REVIEW_DIR / "mission-control-desktop.png")
+        if not args.catalog_only:
+            inspect_mission_control(desktop, REVIEW_DIR / "mission-control-desktop.png")
         desktop.close()
 
         tablet_context = browser.new_context(
@@ -98,17 +110,20 @@ def main() -> None:
         tablet = tablet_context.new_page()
         if not args.mission_control_only:
             inspect_page(tablet, REVIEW_DIR / "tablet-touch.png")
-        inspect_mission_control(tablet, REVIEW_DIR / "mission-control-tablet.png")
+        if not args.catalog_only:
+            inspect_mission_control(tablet, REVIEW_DIR / "mission-control-tablet.png")
         tablet_context.close()
 
         mobile = browser.new_page(viewport={"width": 390, "height": 844}, device_scale_factor=1)
         if not args.mission_control_only:
             inspect_page(mobile, REVIEW_DIR / "mobile.png")
-        inspect_mission_control(mobile, REVIEW_DIR / "mission-control-mobile.png")
+        if not args.catalog_only:
+            inspect_mission_control(mobile, REVIEW_DIR / "mission-control-mobile.png")
         mobile.close()
         browser.close()
 
-    print(f"Browser smoke passed at desktop, touch tablet, and mobile; screenshots: {REVIEW_DIR}")
+    checked = "Mission Control" if args.mission_control_only else "catalog routes"
+    print(f"Browser smoke passed for {checked} at desktop, touch tablet, and mobile; screenshots: {REVIEW_DIR}")
 
 
 def inspect_mission_control(page, screenshot: Path) -> None:

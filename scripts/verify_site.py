@@ -70,9 +70,25 @@ def main() -> int:
 
     require(parser.has_title, "expected page title is missing", failures)
     require(parser.has_canonical, "canonical URL is missing or incorrect", failures)
-    require(parser.catalog_items == 18, f"expected 18 catalog routes, found {parser.catalog_items}", failures)
+    require(parser.catalog_items == 19, f"expected 19 catalog routes, found {parser.catalog_items}", failures)
     require("n8n" not in html.lower(), "n8n appears in the catalog source", failures)
-    require("Why these 18 are here" in html, "catalog selection rubric is missing", failures)
+    require("Why these 19 are here" in html, "catalog selection rubric is missing", failures)
+    searchcarriers = (SITE_ROOT / "searchcarriers" / "index.html").read_text(encoding="utf-8")
+    require(
+        searchcarriers.count('class="sc-skill"') == 26,
+        "SearchCarriers page must list all 26 packages",
+        failures,
+    )
+    require(
+        "Capability brief, not a customer success story" in searchcarriers,
+        "SearchCarriers capability boundary is missing",
+        failures,
+    )
+    require(
+        "https://github.com/jeremylongshore/searchcarriers-tools" in searchcarriers,
+        "SearchCarriers public source link is missing",
+        failures,
+    )
     evidence = json.loads((SITE_ROOT / "assets" / "project-evidence.json").read_text())
     require(len(evidence["personal"]) == 5, "expected five ranked personal source projects", failures)
     require(len(evidence["organization"]) == 6, "expected six organization source projects", failures)
