@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-09-23 — Publish the SearchCarriers capability brief
+
+- Add a responsive capability page for the public SearchCarriers toolkit, covering the
+  operating pain, evidence workflow, all 26 packages, decision boundaries, and potential
+  implementation services without presenting it as a customer success story.
+- Add the SearchCarriers route to the demo catalog, deployment script, sitemap, static
+  verifier, and desktop, tablet, and mobile browser smoke coverage.
+
 ## 2026-09-17 — Restore current Mission Control public reporting
 
 - Replace the unmanaged July 11 “current state” page with a timestamped public source

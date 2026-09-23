@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SearchCarriers skills | Carrier research workflows with explicit evidence | Intent Solutions</title>
+  <meta name="description" content="Twenty-six open-source SearchCarriers skills, MCP plugins, and workflows that turn carrier search, authority, insurance, fraud, compliance, monitoring, reporting, and TMS work into bounded evidence records.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f2f1ed">
+  <meta name="author" content="Jeremy Longshore">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://demos.intentsolutions.io/searchcarriers/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/assets/estate-bar/estate-bar.css">
+  <link rel="stylesheet" href="/assets/estate-accent.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SearchCarriers skills: carrier evidence an operator can inspect">
+  <meta property="og:description" content="Open-source skills and MCP workflows for carrier sourcing, identity, authority, insurance, safety, qualification, monitoring, reporting, and TMS operations.">
+  <meta property="og:url" content="https://demos.intentsolutions.io/searchcarriers/">
+  <meta property="og:site_name" content="Intent Solutions">
+  <meta name="twitter:card" content="summary">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"SearchCarriers Tools","applicationCategory":"BusinessApplication","operatingSystem":"Claude Code and MCP-capable clients","url":"https://demos.intentsolutions.io/searchcarriers/","codeRepository":"https://github.com/jeremylongshore/searchcarriers-tools","license":"https://www.apache.org/licenses/LICENSE-2.0","description":"Open-source carrier research skills, MCP plugins, and workflows built on the SearchCarriers API."}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the page</a>
+
+  <!-- estate-bar:start v1.0.0 site=demos -->
+<nav class="is-estate-bar" aria-label="Intent Solutions network">
+  <div class="is-estate-bar__inner">
+    <a href="https://intentsolutions.io/">Intent Solutions</a>
+    <a href="https://labs.intentsolutions.io/">Labs</a>
+    <a href="https://evals.intentsolutions.io/">Evals</a>
+    <a href="https://demos.intentsolutions.io/" aria-current="page">Demos</a>
+    <a href="https://learn.intentsolutions.io/">Learn</a>
+    <a href="https://oma.intentsolutions.io/">Omarchy</a>
+    <a href="https://tonsofskills.com/">Tons of Skills</a>
+  </div>
+</nav>
+<!-- estate-bar:end -->
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <a class="wordmark" href="/" aria-label="Intent Solutions Demos home">
+        <span class="wordmark-company">Intent Solutions</span>
+        <span class="wordmark-property">Demos</span>
+      </a>
+      <nav class="primary-nav" aria-label="Page navigation">
+        <a href="#pain">The problem</a>
+        <a href="#workflow">How it works</a>
+        <a href="#skills">All 26</a>
+        <a href="#commercial">Possible offers</a>
+        <a href="/#contact">Talk to the team</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="sc-hero shell" aria-labelledby="hero-title">
+      <div>
+        <p class="sc-kicker">Public Apache 2.0 toolkit for the SearchCarriers API</p>
+        <h1 id="hero-title">Carrier research that ends in an <span>auditable next action.</span></h1>
+        <p class="sc-lede">Twenty-six skills, plugins, and workflows turn carrier sourcing, identity, authority, insurance, safety, qualification, monitoring, reporting, and TMS work into evidence an operator can inspect. Every result shows its source, its unknowns, its decision boundary, and who acts next.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#skills">Explore the skill pack</a>
+          <a class="button button-secondary" href="https://github.com/jeremylongshore/searchcarriers-tools" target="_blank" rel="noopener noreferrer">Inspect the public source</a>
+        </div>
+        <p class="sc-note">This is a capability brief for an open-source toolkit. It is not a customer success story, an FMCSA determination, or an endorsement by SearchCarriers.</p>
+      </div>
+      <figure class="sc-board" aria-labelledby="board-caption">
+        <div class="sc-board-head"><span>One carrier decision</span><b>Evidence path</b></div>
+        <ol>
+          <li><span>01</span><div><strong>Resolve</strong><small>USDOT, docket, VIN, or defensible match</small></div></li>
+          <li><span>02</span><div><strong>Fetch</strong><small>The smallest relevant API evidence set</small></div></li>
+          <li><span>03</span><div><strong>Separate</strong><small>Facts, policy, inference, and missing fields</small></div></li>
+          <li><span>04</span><div><strong>Decide</strong><small>A bounded status owned by named policy</small></div></li>
+          <li><span>05</span><div><strong>Act</strong><small>Human owner, next step, and retained receipt</small></div></li>
+        </ol>
+        <figcaption id="board-caption">The repeated contract across all 26 packages.</figcaption>
+      </figure>
+    </section>
+
+    <section class="sc-pain" id="pain" aria-labelledby="pain-title">
+      <div class="shell sc-pain-grid">
+        <div>
+          <p class="sc-section-label">Why this exists</p>
+          <h2 id="pain-title">A carrier lookup is easy. A defensible operating decision is not.</h2>
+          <p class="sc-pain-lede">Fraud, stale records, ambiguous names, different insurance requirements, low-exposure safety data, partial API failures, and local policy all meet at the same desk. The pack makes those seams visible.</p>
+        </div>
+        <ul class="sc-ledger">
+          <li><strong>Find the right carrier</strong><span>Search by identity, geography, fleet, insurance, equipment, cargo, or lane without calling candidates approved.</span></li>
+          <li><strong>Verify the operating facts</strong><span>Reconcile authority, insurance, contacts, equipment, safety evidence, and related entities before a load or onboarding decision.</span></li>
+          <li><strong>Apply your policy</strong><span>Use SearchCarriers qualification reports or a complete customer-owned rule set. Missing evidence never silently passes.</span></li>
+          <li><strong>Operate at panel scale</strong><span>Resume bulk runs, surface stale rows, preserve successful work, format review queues, and propose TMS changes with rollback evidence.</span></li>
+          <li><strong>Monitor honestly</strong><span>Separate a configured watch from an actual event feed, then route supplied changes into bounded review work.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sc-proof" aria-labelledby="proof-title">
+      <div class="shell sc-proof-grid">
+        <div>
+          <p class="sc-section-label">What is shipped</p>
+          <h2 id="proof-title">The API became an operating layer.</h2>
+          <p class="sc-proof-note">Release validation from 23 September 2026. The counts describe the open-source repository; they do not represent customer adoption or business results.</p>
+        </div>
+        <dl class="sc-figures">
+          <div><dt>26</dt><dd>customer jobs with a dedicated skill brief, decision playbook, eval specification, and one-page PDF.</dd></div>
+          <div><dt>5</dt><dd>MCP plugins for carrier intelligence, risk, watch operations, reporting, and integration.</dd></div>
+          <div><dt>14 + 7</dt><dd>focused standalone skills plus composed workflows for daily, panel, TMS, Slack, and fleet work.</dd></div>
+          <div><dt>214</dt><dd>tests passed for release 0.3.0, with both protected GitHub checks green. <a href="https://github.com/jeremylongshore/searchcarriers-tools/pull/4" target="_blank" rel="noopener noreferrer">Inspect PR #4</a></dd></div>
+          <div><dt>A</dt><dd>grade on all 26 skill packages under the repository's validation run, scoring 92–97.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="sc-flow" id="workflow" aria-labelledby="workflow-title">
+      <div class="shell">
+        <div class="section-heading split-heading">
+          <h2 id="workflow-title">One path from search to operations.</h2>
+          <p>Use only the stages the decision needs. Each stage can stop on ambiguity, stale evidence, access limits, or missing policy.</p>
+        </div>
+        <ol class="sc-steps">
+          <li><span>01</span><div><h3>Source</h3><p>Find carriers by identity, geography, lane, cargo, equipment, fleet, insurance, or authority filters.</p></div></li>
+          <li><span>02</span><div><h3>Resolve</h3><p>Confirm the legal entity, docket, USDOT, VIN, contacts, and relationships before evaluating it.</p></div></li>
+          <li><span>03</span><div><h3>Verify</h3><p>Read authority, filed insurance, safety, inspection, crash, equipment, and identity-risk evidence.</p></div></li>
+          <li><span>04</span><div><h3>Qualify</h3><p>Apply a named SearchCarriers qualification or a complete customer-owned policy with reproducible results.</p></div></li>
+          <li><span>05</span><div><h3>Operate</h3><p>Build review queues, dashboards, reports, exports, watches, and dry-run TMS change sets.</p></div></li>
+          <li><span>06</span><div><h3>Retain</h3><p>Keep source, as-of time, missing evidence, policy owner, next action, and run receipts together.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sc-skills" id="skills" aria-labelledby="skills-title">
+      <div class="shell">
+        <div class="section-heading sc-skills-heading">
+          <div>
+            <p class="sc-section-label">The complete pack</p>
+            <h2 id="skills-title">Start with the problem on the desk.</h2>
+          </div>
+          <p><span id="skill-count">26</span> packages shown. Each row links to the customer one-pager and the implementation.</p>
+        </div>
+        <div class="sc-filters" role="group" aria-label="Filter SearchCarriers skills">
+          <button type="button" data-skill-filter="all" aria-pressed="true">All 26</button>
+          <button type="button" data-skill-filter="plugin" aria-pressed="false">MCP plugins</button>
+          <button type="button" data-skill-filter="discovery" aria-pressed="false">Search &amp; identity</button>
+          <button type="button" data-skill-filter="risk" aria-pressed="false">Vetting &amp; risk</button>
+          <button type="button" data-skill-filter="safety" aria-pressed="false">Safety &amp; compliance</button>
+          <button type="button" data-skill-filter="operations" aria-pressed="false">Operations</button>
+          <button type="button" data-skill-filter="workflow" aria-pressed="false">Workflows</button>
+        </div>
+        <div class="sc-skill-ledger">
+<article class="sc-skill" data-group="plugin">
+            <span class="sc-skill-type">MCP plugin</span>
+            <h3>Carrier Integration Operator</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Integration failures become silent data drift when health, partial success, local webhook ownership, and rollback are not explicit.</p><p><strong>Result:</strong> Run API health, resumable bulk lookup, dry-run TMS reconciliation, and local downstream webhook configuration.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/plugins/searchcarriers-api-bridge/skills/searchcarriers-api-bridge/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/plugins/searchcarriers-api-bridge/skills/searchcarriers-api-bridge/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/plugins/searchcarriers-api-bridge/skills/searchcarriers-api-bridge/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="plugin">
+            <span class="sc-skill-type">MCP plugin</span>
+            <h3>Carrier Intel MCP Operator</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Operators need the right tool and route without manually translating API versions or treating search candidates as approved carriers.</p><p><strong>Result:</strong> Use the Carrier Intel MCP tools for identifier resolution, filtered sourcing, profiles, relationship evidence, and fleet summaries.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/plugins/searchcarriers-carrier-intel/skills/searchcarriers-carrier-intel/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/plugins/searchcarriers-carrier-intel/skills/searchcarriers-carrier-intel/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/plugins/searchcarriers-carrier-intel/skills/searchcarriers-carrier-intel/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="plugin">
+            <span class="sc-skill-type">MCP plugin</span>
+            <h3>Carrier Decision Report Builder</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Pretty reports can conceal missing evidence, stale data, and the difference between API facts and analyst judgment.</p><p><strong>Result:</strong> Turn carrier evidence into an auditable report or export without changing the underlying verdict.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/plugins/searchcarriers-ops-reporter/skills/searchcarriers-ops-reporter/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/plugins/searchcarriers-ops-reporter/skills/searchcarriers-ops-reporter/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/plugins/searchcarriers-ops-reporter/skills/searchcarriers-ops-reporter/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="plugin">
+            <span class="sc-skill-type">MCP plugin</span>
+            <h3>Risk Engine MCP Operator</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Composite scores and default thresholds can hide assumptions or be mistaken for FMCSA determinations.</p><p><strong>Result:</strong> Use risk tools as transparent evidence and policy checks without presenting modeled scores as official ratings.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/plugins/searchcarriers-risk-engine/skills/searchcarriers-risk-engine/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/plugins/searchcarriers-risk-engine/skills/searchcarriers-risk-engine/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/plugins/searchcarriers-risk-engine/skills/searchcarriers-risk-engine/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="plugin">
+            <span class="sc-skill-type">MCP plugin</span>
+            <h3>Carrier Watch Operations</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Teams assume a configured watch guarantees alerts even though the public API exposes watch state but no alert-feed endpoint.</p><p><strong>Result:</strong> Manage company watch types and turn supplied change events into review work.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/plugins/searchcarriers-watchdog/skills/searchcarriers-watchdog/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/plugins/searchcarriers-watchdog/skills/searchcarriers-watchdog/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/plugins/searchcarriers-watchdog/skills/searchcarriers-watchdog/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="operations">
+            <span class="sc-skill-type">Operations</span>
+            <h3>Resumable Carrier Batch Runner</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Large panels fail partially because of rate limits, bad identifiers, or tier errors; rerunning everything wastes quota and hides which records changed.</p><p><strong>Result:</strong> Process a carrier panel with bounded concurrency, per-record receipts, and safe restart.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/operations/searchcarriers-bulk-processor/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/operations/searchcarriers-bulk-processor/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/operations/searchcarriers-bulk-processor/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="operations">
+            <span class="sc-skill-type">Operations</span>
+            <h3>Trusted Contact Consistency Check</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Spoofed email, caller ID, and recently changed FMCSA contacts make a matching string insufficient proof of identity.</p><p><strong>Result:</strong> Compare supplied contact details with carrier records and define an independent callback step.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/operations/searchcarriers-contact-verifier/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/operations/searchcarriers-contact-verifier/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/operations/searchcarriers-contact-verifier/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="operations">
+            <span class="sc-skill-type">Operations</span>
+            <h3>Auditable Carrier Exporter</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Exports lose field provenance, leak unnecessary contacts, or execute spreadsheet formulas when opened.</p><p><strong>Result:</strong> Create a minimal, traceable carrier export that is safe to open and lawful to retain.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/operations/searchcarriers-data-exporter/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/operations/searchcarriers-data-exporter/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/operations/searchcarriers-data-exporter/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="operations">
+            <span class="sc-skill-type">Operations</span>
+            <h3>TMS Reconciliation Planner</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Blind TMS overwrites destroy local fields, duplicate carriers, and turn stale API data into operational status.</p><p><strong>Result:</strong> Produce a dry-run carrier change set with idempotent keys and rollback evidence.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/operations/searchcarriers-tms-connector/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/operations/searchcarriers-tms-connector/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/operations/searchcarriers-tms-connector/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="safety">
+            <span class="sc-skill-type">Safety &amp; compliance</span>
+            <h3>Compliance Snapshot Builder</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> One-time onboarding checks age immediately, and teams often mistake a current snapshot for continuous monitoring.</p><p><strong>Result:</strong> Produce a point-in-time carrier compliance snapshot and identify what must be rechecked.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/safety-compliance/searchcarriers-compliance-monitor/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/safety-compliance/searchcarriers-compliance-monitor/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/safety-compliance/searchcarriers-compliance-monitor/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="safety">
+            <span class="sc-skill-type">Safety &amp; compliance</span>
+            <h3>Inspection Pattern Analyzer</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Raw violation totals punish larger fleets and tiny samples make percentages look decisive.</p><p><strong>Result:</strong> Find repeat inspection and violation patterns with exposure-aware evidence.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/safety-compliance/searchcarriers-inspection-analyzer/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/safety-compliance/searchcarriers-inspection-analyzer/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/safety-compliance/searchcarriers-inspection-analyzer/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="safety">
+            <span class="sc-skill-type">Safety &amp; compliance</span>
+            <h3>Safety Evidence Interpreter</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Teams confuse FMCSA safety ratings, BASIC information, crashes, and missing data, leading to false passes and false rejections.</p><p><strong>Result:</strong> Explain a carrier safety record without inventing a universal safety score.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/safety-compliance/searchcarriers-safety-scorer/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/safety-compliance/searchcarriers-safety-scorer/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/safety-compliance/searchcarriers-safety-scorer/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="discovery">
+            <span class="sc-skill-type">Search &amp; identity</span>
+            <h3>Carrier Candidate Finder</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> A name-only search returns false matches, while a broad search returns candidates that cannot serve the load.</p><p><strong>Result:</strong> Find a defensible carrier shortlist for a named company, identifier, geography, fleet need, insurance requirement, or lane.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/search-discovery/searchcarriers-carrier-lookup/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/search-discovery/searchcarriers-carrier-lookup/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/search-discovery/searchcarriers-carrier-lookup/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="discovery">
+            <span class="sc-skill-type">Search &amp; identity</span>
+            <h3>Carrier Relationship Mapper</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Fraud investigations often overstate weak shared attributes, and common addresses or service providers create noisy links.</p><p><strong>Result:</strong> Map evidence of shared equipment and related company records without declaring common control.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/search-discovery/searchcarriers-entity-mapper/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/search-discovery/searchcarriers-entity-mapper/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/search-discovery/searchcarriers-entity-mapper/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="discovery">
+            <span class="sc-skill-type">Search &amp; identity</span>
+            <h3>Fleet Identity Reconciler</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> A truck at pickup may not match the approved carrier, while leased or transferred equipment can create legitimate multi-carrier history.</p><p><strong>Result:</strong> Reconcile a VIN, the carrier claiming it, and the companies observed operating it.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/search-discovery/searchcarriers-vin-decoder/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/search-discovery/searchcarriers-vin-decoder/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/search-discovery/searchcarriers-vin-decoder/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="risk">
+            <span class="sc-skill-type">Vetting &amp; risk</span>
+            <h3>Operating Authority Verifier</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> A valid DOT is not the same as active for-hire authority, and similar names or old dockets cause misidentification.</p><p><strong>Result:</strong> Verify that the identified entity has the authority required for the intended job.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/vetting-risk/searchcarriers-authority-checker/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/vetting-risk/searchcarriers-authority-checker/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/vetting-risk/searchcarriers-authority-checker/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="risk">
+            <span class="sc-skill-type">Vetting &amp; risk</span>
+            <h3>Carrier Identity Risk Triage</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Identity theft, spoofed contacts, unauthorized USDOT use, and carrier-involved theft defeat single-source checks.</p><p><strong>Result:</strong> Triage carrier identity anomalies and prescribe independent verification without accusing a carrier of fraud.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/vetting-risk/searchcarriers-fraud-detector/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/vetting-risk/searchcarriers-fraud-detector/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/vetting-risk/searchcarriers-fraud-detector/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="risk">
+            <span class="sc-skill-type">Vetting &amp; risk</span>
+            <h3>Insurance Filing Reconciler</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Insurance minimums vary by operation, and certificates can be altered or inconsistent with filed coverage.</p><p><strong>Result:</strong> Reconcile filed insurance evidence with the requirements for the exact entity, authority, cargo, and vehicle.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/vetting-risk/searchcarriers-insurance-validator/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/vetting-risk/searchcarriers-insurance-validator/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/vetting-risk/searchcarriers-insurance-validator/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="risk">
+            <span class="sc-skill-type">Vetting &amp; risk</span>
+            <h3>Policy Qualification Runner</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Informal checklists drift between analysts, while hidden defaults create decisions no one can audit.</p><p><strong>Result:</strong> Apply named company or customer criteria and return reproducible Pass, Review, or Fail evidence.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/vetting-risk/searchcarriers-vetting-rules/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/skills/vetting-risk/searchcarriers-vetting-rules/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/skills/vetting-risk/searchcarriers-vetting-rules/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="workflow">
+            <span class="sc-skill-type">Composed workflow</span>
+            <h3>Fleet Risk Exception Dashboard</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Large panels need triage, but opaque scores and missing-data rows can send analysts to the wrong carriers.</p><p><strong>Result:</strong> Rank a carrier panel by actionable evidence exceptions without hiding uncertainty behind a composite score.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/enterprise/fleet-risk-dashboard/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/workflows/enterprise/fleet-risk-dashboard/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/enterprise/fleet-risk-dashboard/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="workflow">
+            <span class="sc-skill-type">Composed workflow</span>
+            <h3>Approved TMS Change Application</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Automated status writes can strand loads or overwrite local ownership fields when events are stale, duplicated, or incomplete.</p><p><strong>Result:</strong> Apply an approved carrier change set idempotently and prove the result.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/enterprise/tms-auto-sync/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/workflows/enterprise/tms-auto-sync/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/enterprise/tms-auto-sync/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="workflow">
+            <span class="sc-skill-type">Composed workflow</span>
+            <h3>Carrier Review Queue Digest</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Daily summaries become misleading when they collapse missing evidence into passes or imply email delivery occurred.</p><p><strong>Result:</strong> Turn supplied or fetched qualification results into a prioritized human review queue.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/pro/daily-vetting-digest/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/workflows/pro/daily-vetting-digest/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/pro/daily-vetting-digest/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="workflow">
+            <span class="sc-skill-type">Composed workflow</span>
+            <h3>Carrier Panel Compliance Dashboard</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> A green dashboard can hide old snapshots, low-exposure carriers, and failed API calls.</p><p><strong>Result:</strong> Build an as-of panel dashboard that exposes stale, missing, and high-priority evidence.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/proplus/compliance-dashboard/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/workflows/proplus/compliance-dashboard/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/proplus/compliance-dashboard/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="workflow">
+            <span class="sc-skill-type">Composed workflow</span>
+            <h3>Insurance Change Review</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> A cancellation notice may be future-dated, replaced, stale, or unrelated to the required coverage, while false alarms disrupt loads.</p><p><strong>Result:</strong> Evaluate a supplied insurance change or current filing and create a bounded response.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/proplus/insurance-lapse-alert/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/workflows/proplus/insurance-lapse-alert/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/proplus/insurance-lapse-alert/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="workflow">
+            <span class="sc-skill-type">Composed workflow</span>
+            <h3>Carrier Event Slack Formatter</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> Untrusted event payloads and invented alert feeds create false urgency or expose webhook secrets.</p><p><strong>Result:</strong> Validate and format a supplied carrier-change event for Slack delivery.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/proplus/slack-carrier-watch/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/workflows/proplus/slack-carrier-watch/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/proplus/slack-carrier-watch/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+<article class="sc-skill" data-group="workflow">
+            <span class="sc-skill-type">Composed workflow</span>
+            <h3>Bulk Carrier Qualification Pipeline</h3>
+            <div class="sc-skill-copy"><p><strong>Pain:</strong> A single bad row or rate limit should not invalidate hundreds of carrier decisions, and default criteria should not be invented.</p><p><strong>Result:</strong> Run named policy qualification across a carrier list with restartable evidence.</p></div>
+            <div class="sc-skill-links"><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/smb/bulk-vetting-pipeline/docs/ONE-PAGER.md" target="_blank" rel="noopener noreferrer">One-pager</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/raw/refs/heads/main/workflows/smb/bulk-vetting-pipeline/docs/ONE-PAGER.pdf">PDF</a><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/workflows/smb/bulk-vetting-pipeline/SKILL.md" target="_blank" rel="noopener noreferrer">Source</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sc-boundary" aria-labelledby="boundary-title">
+      <div class="shell sc-boundary-grid">
+        <div>
+          <p class="sc-section-label">The trust boundary</p>
+          <h2 id="boundary-title">Evidence in. Named policy around it. Human authority at the end.</h2>
+          <p>SearchCarriers supplies research evidence. The skills preserve that evidence and make operational decisions reproducible without upgrading a model, a missing field, or a search result into official truth.</p>
+        </div>
+        <div class="sc-contract">
+          <section><h3>The tools can</h3><ul><li>Resolve identifiers and compare records</li><li>Expose missing, stale, or partial evidence</li><li>Apply an explicit policy or upstream qualification</li><li>Produce review work, reports, exports, and dry runs</li></ul></section>
+          <section><h3>The tools do not</h3><ul><li>Create an official FMCSA safety rating</li><li>Guarantee a carrier, person, load, or transaction</li><li>Invent customer thresholds or approve a carrier by default</li><li>Support employment, credit, housing, insurance, or other FCRA-regulated eligibility decisions</li></ul></section>
+        </div>
+      </div>
+    </section>
+
+    <section class="sc-commercial" id="commercial" aria-labelledby="commercial-title">
+      <div class="shell sc-commercial-grid">
+        <div>
+          <p class="sc-section-label">If this becomes an offer</p>
+          <h2 id="commercial-title">The open-source pack is the base. Implementation is the productizable layer.</h2>
+          <p class="sc-commercial-lede">No public price or customer claim is attached yet. These are the clean commercial shapes the current architecture supports.</p>
+        </div>
+        <ol class="sc-offers">
+          <li><span>01</span><div><strong>Operator setup</strong><p>Install the plugins, connect the account, choose the relevant workflows, and train the team on evidence boundaries.</p></div></li>
+          <li><span>02</span><div><strong>Policy implementation</strong><p>Translate a customer's documented carrier rules into explicit Pass, Review, and Fail evidence without hidden defaults.</p></div></li>
+          <li><span>03</span><div><strong>TMS and workflow integration</strong><p>Connect the evidence path to carrier master data, review queues, Slack, reports, exports, and approved change application.</p></div></li>
+          <li><span>04</span><div><strong>Managed operations layer</strong><p>Run scheduled panels, stale-data reviews, exception dashboards, and controlled change follow-up with retained receipts.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sc-sources" aria-labelledby="sources-title">
+      <div class="shell sc-sources-grid">
+        <div><p class="sc-section-label">Grounded in current operating pain</p><h2 id="sources-title">Inspect the evidence behind the positioning.</h2></div>
+        <ul>
+          <li><a href="https://searchcarriers.com/changelog/1.31.0" target="_blank" rel="noopener noreferrer">SearchCarriers 1.31.0</a><span>Named qualifications, advanced v3 filters, and qualification reports.</span></li>
+          <li><a href="https://searchcarriers.com/docs/api" target="_blank" rel="noopener noreferrer">SearchCarriers API</a><span>The published route and authentication contract.</span></li>
+          <li><a href="https://www.fmcsa.dot.gov/mission/help/broker-and-carrier-fraud-and-identity-theft" target="_blank" rel="noopener noreferrer">FMCSA fraud guidance</a><span>Independent identity and contact verification.</span></li>
+          <li><a href="https://news.tianet.org/tia-releases-state-of-fraud-in-the-industry-april-2025-report/" target="_blank" rel="noopener noreferrer">TIA State of Fraud</a><span>Industry-reported fraud patterns affecting brokers and carriers.</span></li>
+          <li><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/docs/PAIN-POINT-RESEARCH.md" target="_blank" rel="noopener noreferrer">Research record</a><span>The complete source-to-feature mapping used for the rebuild.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="sc-close" aria-labelledby="close-title">
+      <div class="shell sc-close-grid">
+        <div>
+          <h2 id="close-title">Have a carrier decision that still lives in spreadsheets and tribal knowledge?</h2>
+          <p>Bring the policy, the operating system it has to reach, and the evidence your team trusts. We can map the shortest defensible path from API response to owned action.</p>
+        </div>
+        <div class="hero-actions">
+          <a class="button button-primary" href="/#contact">Discuss a pilot</a>
+          <a class="button button-secondary" href="https://github.com/jeremylongshore/searchcarriers-tools" target="_blank" rel="noopener noreferrer">Inspect the toolkit</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-grid">
+      <div><a class="footer-wordmark" href="https://intentsolutions.io/">Intent Solutions</a><p>Agentic systems built by a team and judged by the work.</p></div>
+      <nav aria-label="Footer links"><a href="/">All demos</a><a href="https://github.com/jeremylongshore/searchcarriers-tools">Public source</a><a href="https://intentsolutions.io/terms">Terms</a><a href="https://intentsolutions.io/privacy">Privacy</a><a href="https://intentsolutions.io/acceptable-use">Acceptable use</a></nav>
+      <p class="footer-meta">© 2026 Intent Solutions · Repository and validation state checked 23 September 2026 · Capability brief, not a customer success story</p>
+    </div>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
