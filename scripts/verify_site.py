@@ -99,6 +99,16 @@ def main() -> int:
         "SearchCarriers public source link is missing",
         failures,
     )
+    require(
+        'href="https://searchcarriers.com/lander"' in searchcarriers,
+        "SearchCarriers product link is missing",
+        failures,
+    )
+    require(
+        'href="https://searchcarriers.com/docs/api"' in searchcarriers,
+        "SearchCarriers API documentation link is missing",
+        failures,
+    )
     evidence = json.loads((SITE_ROOT / "assets" / "project-evidence.json").read_text())
     require(len(evidence["personal"]) == 5, "expected five ranked personal source projects", failures)
     require(len(evidence["organization"]) == 6, "expected six organization source projects", failures)
