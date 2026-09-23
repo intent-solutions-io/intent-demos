@@ -80,6 +80,16 @@ def main() -> int:
         failures,
     )
     require(
+        "Grok Build, Claude Code, and other MCP clients" in searchcarriers,
+        "SearchCarriers page must state the tested multi-model boundary",
+        failures,
+    )
+    require(
+        "hosted Grok Bot needs an authenticated Streamable HTTP deployment" in searchcarriers,
+        "SearchCarriers page must state the hosted Grok Bot transport boundary",
+        failures,
+    )
+    require(
         "Capability brief, not a customer success story" in searchcarriers,
         "SearchCarriers capability boundary is missing",
         failures,
