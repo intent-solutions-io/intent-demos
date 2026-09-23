@@ -7,6 +7,9 @@
   implementation services without presenting it as a customer success story.
 - Add the SearchCarriers route to the demo catalog, deployment script, sitemap, static
   verifier, and desktop, tablet, and mobile browser smoke coverage.
+- Document the provider-neutral MCP boundary, including direct Grok Build and Claude Code
+  support, generic handshake proof for all five servers, and the hosted Grok Bot transport
+  boundary.
 
 ## 2026-09-17 — Restore current Mission Control public reporting
 

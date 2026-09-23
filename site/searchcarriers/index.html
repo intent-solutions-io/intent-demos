@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SearchCarriers skills | Carrier research workflows with explicit evidence | Intent Solutions</title>
-  <meta name="description" content="Twenty-six open-source SearchCarriers skills, MCP plugins, and workflows that turn carrier search, authority, insurance, fraud, compliance, monitoring, reporting, and TMS work into bounded evidence records.">
+  <meta name="description" content="Twenty-six model-agnostic SearchCarriers skills, MCP plugins, and workflows that turn carrier search, authority, insurance, fraud, compliance, monitoring, reporting, and TMS work into bounded evidence records.">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#f2f1ed">
   <meta name="author" content="Jeremy Longshore">
@@ -24,7 +24,7 @@
   <meta property="og:site_name" content="Intent Solutions">
   <meta name="twitter:card" content="summary">
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"SearchCarriers Tools","applicationCategory":"BusinessApplication","operatingSystem":"Claude Code and MCP-capable clients","url":"https://demos.intentsolutions.io/searchcarriers/","codeRepository":"https://github.com/jeremylongshore/searchcarriers-tools","license":"https://www.apache.org/licenses/LICENSE-2.0","description":"Open-source carrier research skills, MCP plugins, and workflows built on the SearchCarriers API."}
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"SearchCarriers Tools","applicationCategory":"BusinessApplication","operatingSystem":"Grok Build, Claude Code, and MCP-capable clients","url":"https://demos.intentsolutions.io/searchcarriers/","codeRepository":"https://github.com/jeremylongshore/searchcarriers-tools","license":"https://www.apache.org/licenses/LICENSE-2.0","description":"Open-source, model-agnostic carrier research skills, MCP plugins, and workflows built on the SearchCarriers API."}
   </script>
 </head>
 <body>
@@ -65,7 +65,7 @@
       <div>
         <p class="sc-kicker">Public Apache 2.0 toolkit for the SearchCarriers API</p>
         <h1 id="hero-title">Carrier research that ends in an <span>auditable next action.</span></h1>
-        <p class="sc-lede">Twenty-six skills, plugins, and workflows turn carrier sourcing, identity, authority, insurance, safety, qualification, monitoring, reporting, and TMS work into evidence an operator can inspect. Every result shows its source, its unknowns, its decision boundary, and who acts next.</p>
+        <p class="sc-lede">Twenty-six model-agnostic skills, plugins, and workflows turn carrier sourcing, identity, authority, insurance, safety, qualification, monitoring, reporting, and TMS work into evidence an operator can inspect. Grok Build, Claude Code, and other MCP clients can call the same provider-neutral tools.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#skills">Explore the skill pack</a>
           <a class="button button-secondary" href="https://github.com/jeremylongshore/searchcarriers-tools" target="_blank" rel="noopener noreferrer">Inspect the public source</a>
@@ -107,13 +107,15 @@
         <div>
           <p class="sc-section-label">What is shipped</p>
           <h2 id="proof-title">The API became an operating layer.</h2>
-          <p class="sc-proof-note">Release validation from 23 September 2026. The counts describe the open-source repository; they do not represent customer adoption or business results.</p>
+          <p class="sc-proof-note">Repository validation from 23 September 2026. The counts describe the open-source implementation; they do not represent customer adoption or business results.</p>
+          <p class="sc-proof-note">Grok Build can load the local servers today. A hosted Grok Bot needs an authenticated Streamable HTTP deployment around the same tools.</p>
         </div>
         <dl class="sc-figures">
           <div><dt>26</dt><dd>customer jobs with a dedicated skill brief, decision playbook, eval specification, and one-page PDF.</dd></div>
           <div><dt>5</dt><dd>MCP plugins for carrier intelligence, risk, watch operations, reporting, and integration.</dd></div>
           <div><dt>14 + 7</dt><dd>focused standalone skills plus composed workflows for daily, panel, TMS, Slack, and fleet work.</dd></div>
-          <div><dt>214</dt><dd>tests passed for release 0.3.0, with both protected GitHub checks green. <a href="https://github.com/jeremylongshore/searchcarriers-tools/pull/4" target="_blank" rel="noopener noreferrer">Inspect PR #4</a></dd></div>
+          <div><dt>5/5</dt><dd>MCP servers complete a generic protocol handshake and publish their JSON tool schemas in CI.</dd></div>
+          <div><dt>0</dt><dd>model-provider SDK imports in the MCP runtime. <a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/MODEL-COMPATIBILITY.md" target="_blank" rel="noopener noreferrer">Inspect the compatibility boundary</a></dd></div>
           <div><dt>A</dt><dd>grade on all 26 skill packages under the repository's validation run, scoring 92–97.</dd></div>
         </dl>
       </div>
@@ -320,7 +322,7 @@
         <div>
           <p class="sc-section-label">The trust boundary</p>
           <h2 id="boundary-title">Evidence in. Named policy around it. Human authority at the end.</h2>
-          <p>SearchCarriers supplies research evidence. The skills preserve that evidence and make operational decisions reproducible without upgrading a model, a missing field, or a search result into official truth.</p>
+          <p>SearchCarriers supplies research evidence. Grok, Claude, or another MCP client can orchestrate the same tools, while the skills preserve the evidence and prevent a model, missing field, or search result from becoming official truth.</p>
         </div>
         <div class="sc-contract">
           <section><h3>The tools can</h3><ul><li>Resolve identifiers and compare records</li><li>Expose missing, stale, or partial evidence</li><li>Apply an explicit policy or upstream qualification</li><li>Produce review work, reports, exports, and dry runs</li></ul></section>
@@ -351,6 +353,7 @@
         <ul>
           <li><a href="https://searchcarriers.com/changelog/1.31.0" target="_blank" rel="noopener noreferrer">SearchCarriers 1.31.0</a><span>Named qualifications, advanced v3 filters, and qualification reports.</span></li>
           <li><a href="https://searchcarriers.com/docs/api" target="_blank" rel="noopener noreferrer">SearchCarriers API</a><span>The published route and authentication contract.</span></li>
+          <li><a href="https://docs.x.ai/build/features/mcp-servers" target="_blank" rel="noopener noreferrer">Grok Build MCP servers</a><span>Grok's documented local stdio and project `.mcp.json` compatibility.</span></li>
           <li><a href="https://www.fmcsa.dot.gov/mission/help/broker-and-carrier-fraud-and-identity-theft" target="_blank" rel="noopener noreferrer">FMCSA fraud guidance</a><span>Independent identity and contact verification.</span></li>
           <li><a href="https://news.tianet.org/tia-releases-state-of-fraud-in-the-industry-april-2025-report/" target="_blank" rel="noopener noreferrer">TIA State of Fraud</a><span>Industry-reported fraud patterns affecting brokers and carriers.</span></li>
           <li><a href="https://github.com/jeremylongshore/searchcarriers-tools/blob/main/docs/PAIN-POINT-RESEARCH.md" target="_blank" rel="noopener noreferrer">Research record</a><span>The complete source-to-feature mapping used for the rebuild.</span></li>
