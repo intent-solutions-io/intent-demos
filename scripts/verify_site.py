@@ -65,6 +65,7 @@ def main() -> int:
     failures: list[str] = []
     html_path = SITE_ROOT / "index.html"
     html = html_path.read_text(encoding="utf-8")
+    about = (SITE_ROOT / "about" / "index.html").read_text(encoding="utf-8")
     parser = CatalogParser()
     parser.feed(html)
 
@@ -73,6 +74,22 @@ def main() -> int:
     require(parser.catalog_items == 19, f"expected 19 catalog routes, found {parser.catalog_items}", failures)
     require("n8n" not in html.lower(), "n8n appears in the catalog source", failures)
     require("Why these 19 are here" in html, "catalog selection rubric is missing", failures)
+    about_headings = [
+        "What Intent Demos does",
+        "What makes Intent Demos different",
+        "Who uses Intent Demos",
+        "The team behind Intent Demos",
+        "How Intent Demos works",
+        "Key facts",
+        "Frequently asked questions",
+    ]
+    about_cursor = 0
+    for heading in about_headings:
+        position = about.find(f">{heading}</h2>", about_cursor)
+        require(position > about_cursor, f"About heading missing or out of order: {heading}", failures)
+        about_cursor = position
+    require('<table class="about-facts">' in about, "About key facts must use a semantic table", failures)
+    require('"@type":"FAQPage"' in about, "About FAQPage schema is missing", failures)
     searchcarriers = (SITE_ROOT / "searchcarriers" / "index.html").read_text(encoding="utf-8")
     require(
         searchcarriers.count('class="sc-skill"') == 26,
@@ -168,6 +185,7 @@ def main() -> int:
     root = ET.parse(sitemap_path).getroot()
     sitemap_urls = {node.text for node in root.iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc")}
     require("https://demos.intentsolutions.io/" in sitemap_urls, "root URL missing from sitemap", failures)
+    require("https://demos.intentsolutions.io/about/" in sitemap_urls, "About URL missing from sitemap", failures)
     for href in local_demo_hrefs:
         expected = f"https://demos.intentsolutions.io{href}"
         require(expected in sitemap_urls, f"catalog route missing from sitemap: {href}", failures)
