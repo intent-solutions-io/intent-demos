@@ -71,9 +71,9 @@ def main() -> int:
 
     require(parser.has_title, "expected page title is missing", failures)
     require(parser.has_canonical, "canonical URL is missing or incorrect", failures)
-    require(parser.catalog_items == 19, f"expected 19 catalog routes, found {parser.catalog_items}", failures)
+    require(parser.catalog_items == 20, f"expected 20 catalog routes, found {parser.catalog_items}", failures)
     require("n8n" not in html.lower(), "n8n appears in the catalog source", failures)
-    require("Why these 19 are here" in html, "catalog selection rubric is missing", failures)
+    require("Why these 20 are here" in html, "catalog selection rubric is missing", failures)
     about_headings = [
         "What Intent Demos does",
         "What makes Intent Demos different",
