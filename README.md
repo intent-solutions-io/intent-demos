@@ -1,5 +1,12 @@
 # Intent Demos
 
+<!-- intent-select-partner:start -->
+<p><a href="https://intentsolutions.io/"><img src="assets/brand/claude-select-partner.svg" alt="Intent Solutions: Claude Partner Network Select Services Partner" width="300" height="95" /></a></p>
+
+Intent Solutions is a Claude Partner Network Select Services Partner.
+<!-- intent-select-partner:end -->
+
+
 Source for the catalog at [demos.intentsolutions.io](https://demos.intentsolutions.io/). The site is a proof-first directory of working Intent Solutions systems, public source, and independently verifiable adoption signals.
 
 ## Development
