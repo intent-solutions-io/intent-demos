@@ -26,4 +26,7 @@ cp -f "$site_root/searchcarriers/app.js" "$deploy_root/searchcarriers/app.js"
 cp -f "$site_root"/assets/screens/*.webp "$deploy_root/assets/screens/"
 cp -f "$site_root"/assets/screens/*.webp.json "$deploy_root/assets/screens/"
 
+cp -f "$site_root/assets/claude-select-partner.svg" "$deploy_root/assets/claude-select-partner.svg"
+cp -f "$site_root/assets/intent-partner.css" "$deploy_root/assets/intent-partner.css"
+
 echo "Deployed catalog shell, About page, and the repository-owned SearchCarriers route to $deploy_root."
