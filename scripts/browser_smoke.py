@@ -24,8 +24,8 @@ def inspect_page(page, screenshot: Path) -> None:
     page.goto(BASE_URL, wait_until="networkidle")
     page.locator("#hero-title").wait_for(state="visible")
 
-    assert page.locator(".catalog-item").count() == 20
-    assert page.locator(".catalog-item:visible").count() == 20
+    assert page.locator(".catalog-item").count() == 19
+    assert page.locator(".catalog-item:visible").count() == 19
     assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
     assert page.locator('a[href="https://labs.intentsolutions.io/"]').count() >= 1
     assert page.locator('a[href="https://evals.intentsolutions.io/"]').count() >= 1
@@ -50,9 +50,14 @@ def inspect_page(page, screenshot: Path) -> None:
         assert link.get_attribute("target") == "_blank"
         assert link.evaluate("element => getComputedStyle(element).touchAction") == "pan-y"
 
-    page.get_by_role("button", name="Systems").click()
+    assert page.locator('.catalog-item').first.get_by_role('heading', name='Intent Outreach', exact=True).count() == 1
+    assert page.locator('.catalog-item a[href="/intentoutreach/"]').count() == 1
+    page.locator('#catalog-search').fill('Outreach')
+    assert page.locator('.catalog-item:visible').count() == 1
+    page.locator('#catalog-search').fill('')
+    page.get_by_role("button", name="Business tools").click()
     assert page.locator(".catalog-item:visible").count() == 7
-    assert page.locator("#filter-status").text_content() == "Showing 7 routes in system work."
+    assert page.locator("#filter-status").text_content() == "Showing 7 examples in business tools."
 
     page.locator("#catalog-search").fill("CAD")
     assert page.locator(".catalog-item:visible").count() == 1
@@ -61,7 +66,7 @@ def inspect_page(page, screenshot: Path) -> None:
     page.get_by_role("button", name="Show all work").click() if page.locator("#empty-state:visible").count() else None
     page.locator("#catalog-search").fill("")
     page.get_by_role("button", name="All work").click()
-    assert page.locator(".catalog-item:visible").count() == 20
+    assert page.locator(".catalog-item:visible").count() == 19
 
     page.goto(f"{BASE_URL}/searchcarriers/", wait_until="networkidle")
     assert page.get_by_role("heading", name="Carrier research that ends in an auditable next action.").is_visible()

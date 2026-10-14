@@ -21,10 +21,10 @@
 
     count.textContent = String(visible);
     empty.hidden = visible !== 0;
-    const category = activeFilter === 'all' ? 'all work' : `${activeFilter} work`;
+    const category = {all: 'all examples', system: 'business tools', method: 'how we build', field: 'industry examples'}[activeFilter];
     status.textContent = query
-      ? `Showing ${visible} ${visible === 1 ? 'route' : 'routes'} for “${search.value.trim()}” in ${category}.`
-      : `Showing ${visible === items.length ? 'all ' : ''}${visible} ${visible === 1 ? 'route' : 'routes'}${activeFilter === 'all' ? '.' : ` in ${category}.`}`;
+      ? `Showing ${visible} ${visible === 1 ? 'example' : 'examples'} for “${search.value.trim()}” in ${category}.`
+      : `Showing ${visible === items.length ? 'all ' : ''}${visible} ${visible === 1 ? 'example' : 'examples'}${activeFilter === 'all' ? '.' : ` in ${category}.`}`;
   };
 
   filterButtons.forEach((button) => {
