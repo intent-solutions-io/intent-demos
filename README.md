@@ -32,7 +32,30 @@ An entry must have a working public route, an inspectable artifact or evidence t
 
 ## Deployment
 
-`scripts/deploy_local.sh` copies only the versioned catalog files into `/home/jeremy/demos`. It deliberately does not delete or replace the independently managed demo directories already served there.
+`scripts/deploy_local.sh` copies the versioned catalog files, SearchCarriers page and fictional Prospect Prep demonstration into `/home/jeremy/demos`. It preserves independently managed demo directories.
+
+## Fictional Prospect Prep demonstration
+
+The public route is `/prospect-prep-automation/`. Its HTML and PDF are owned here under
+`site/prospect-prep-automation/`; private engagement documents are not publication sources.
+All people, team relationships, territory labels and example market figures are fictional or illustrative.
+The account checklist source is `docs/prospect-prep-account-setup.md`.
+Render it through the canonical whiteglove pipeline using the included public-demo theme:
+
+```bash
+PROSPECT_PDF_BUILD_DIR=$(mktemp -d)
+WHITEGLOVE_THEMES_DIR="$PWD/docs" bash "$HOME/.claude/skills/whiteglove-pdf/scripts/render.sh" \
+  --input docs/prospect-prep-account-setup.md \
+  --out "$PROSPECT_PDF_BUILD_DIR/account-setup.pdf" --template public-demo
+# Complete the review below before copying only the PDF into the public tree.
+cp -f "$PROSPECT_PDF_BUILD_DIR/account-setup.pdf" site/prospect-prep-automation/account-setup.pdf
+```
+
+Review PDF text, metadata, links, attachments and every page before publishing.
+Keep renderer receipts outside the public tree; they contain local paths and are not public artifacts.
+Keep real credentials, personal contact details and private engagement identifiers out of these files.
+Legacy bookmarks are handled by bounded redirects in the host's existing Caddy configuration;
+their private backup and verification receipts stay outside the served tree and Git.
 
 ## Mission Control public feed
 

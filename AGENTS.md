@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-`site/` is the deployable static catalog. The page shell lives in `site/index.html`; reusable styles and browser behavior belong in `site/assets/`. Live-site captures and their provenance sidecars live in `site/assets/screens/`. `scripts/` contains verification and the bounded local deployment command. Product and Impeccable context live in `PRODUCT.md`, `DESIGN.md`, and `.impeccable/`.
+`site/` is the deployable static catalog. The page shell lives in `site/index.html`; reusable styles and browser behavior belong in `site/assets/`. The fictional public Prospect Prep HTML/PDF lives in `site/prospect-prep-automation/`, with PDF source and theme under `docs/`; never republish private engagement documents there. Live-site captures and their provenance sidecars live in `site/assets/screens/`. `scripts/` contains verification and the bounded local deployment command. Product and Impeccable context live in `PRODUCT.md`, `DESIGN.md`, and `.impeccable/`.
 
 ## Build, Test, and Development Commands
 
