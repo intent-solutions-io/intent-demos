@@ -1,0 +1,46 @@
+name: public-demo
+description: Intent Solutions public fictional demonstration, based on the formal
+  record treatment.
+fonts:
+  main: null
+  sans: null
+  mono: null
+  mono_scale: null
+colors:
+  ink: '000000'
+  muted: '000000'
+  accent: '000000'
+  emphasis: '000000'
+  rule: '000000'
+page:
+  margin_in: 1.0
+  linespread: 1.0
+  parindent: true
+  parskip_em: 0
+headings:
+  style: classic
+emphasis:
+  style: italic
+lists:
+  style: default
+links:
+  colored: false
+tables:
+  font: normal
+  arraystretch: 1.35
+  heavy_rule_pt: 0.9
+  light_rule_pt: 0.4
+  pre_em: 2.6
+  post_em: 2.6
+header: null
+footer:
+  font: serif
+  left: Intent Solutions • Fictional demonstration
+  center: demos.intentsolutions.io
+  right: page-of
+  rule_pt: 0.4
+  rule_color: null
+  skip_pt: null
+logo: null
+qa:
+  code_chars: 80
