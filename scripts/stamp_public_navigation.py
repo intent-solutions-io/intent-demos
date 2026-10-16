@@ -21,15 +21,21 @@ def main():
     args = parser.parse_args()
     routes = json.loads((ROOT / 'site/assets/public-page-routes.json').read_text())['pages']
     fragment = (ROOT / 'site/assets/estate-bar/fragments/estate-bar.demos.html').read_text().strip()
-    backup = None
-    failures = []
+    # Validate the complete batch before the first write, so a missing route
+    # cannot leave a partially updated deployment.
+    paths = []
     for rel in routes:
         if Path(rel).is_absolute() or any(x.startswith(('.', '_')) for x in Path(rel).parts):
             raise SystemExit(f'Unapproved path: {rel}')
         path = args.root / rel
         if not path.is_file():
-            failures.append(f'Missing public page: {rel}')
-            continue
+            raise SystemExit(f'Missing public page: {rel}')
+        if not path.resolve().is_relative_to(args.root.resolve()):
+            raise SystemExit(f'Public page escapes deployment root: {rel}')
+        paths.append((rel, path))
+    backup = None
+    failures = []
+    for rel, path in paths:
         before = path.read_text()
         if args.check:
             if fragment not in before:
