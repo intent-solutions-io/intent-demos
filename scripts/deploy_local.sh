@@ -33,4 +33,6 @@ cp -f "$site_root"/assets/screens/*.webp.json "$deploy_root/assets/screens/"
 cp -f "$site_root/assets/claude-select-partner.svg" "$deploy_root/assets/claude-select-partner.svg"
 cp -f "$site_root/assets/intent-partner.css" "$deploy_root/assets/intent-partner.css"
 
+python3 "$repo_root/scripts/stamp_public_navigation.py" --root "$deploy_root"
+
 echo "Deployed catalog shell, About page, and the repository-owned SearchCarriers and fictional Prospect Prep routes to $deploy_root."

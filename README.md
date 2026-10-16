@@ -71,3 +71,9 @@ python -m unittest discover -s scripts -p 'test_mission_control.py' -v
 Browser smoke checks need a generated Mission Control snapshot rather than the unexpanded
 source template. Serve a preview assembled with `mission_control.build_release`, or set
 `DEMOS_BASE_URL=https://demos.intentsolutions.io` for the deployed-site verification.
+
+### Public navigation coverage
+
+`site/assets/public-page-routes.json` is an explicit inventory of reviewed public HTML routes, including historical technical pages outside this repository's content ownership. The deploy command stamps their shared navigation after copying repository-owned pages. `scripts/stamp_public_navigation.py --check` checks coverage; each mutation keeps an exact backup under `/tmp/intent-demos-navigation-backup-*`. It does not walk or publish hidden files, proxy applications, or generated Mission Control snapshots. Add public routes deliberately when publishing new experiences.
+
+The 19-item current-work catalog is supplemented by a separately labeled technical-evidence section for Kobiton and Built with Claude Code. These are evidence pages, not additional products.
