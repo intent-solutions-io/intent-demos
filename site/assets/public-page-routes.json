@@ -3,8 +3,6 @@
   "pages": [
     "about/index.html",
     "acceptable-use.html",
-    "bbb/index.html",
-    "bbb/system-map.html",
     "built-with-claude-code/index.html",
     "cad-ai-agent/index.html",
     "claude-for-slack-rent-vs-own.html",
