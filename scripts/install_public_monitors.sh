@@ -10,7 +10,8 @@ monitor_user="${MC_MONITOR_USER:-intentsolutions}"
 id "$monitor_user" >/dev/null
 credentials="${MC_MONITOR_ENV:-/etc/intentsolutions/scorecardecho-observer.env}"
 [ -f "$credentials" ] || { echo "Governed notifier environment missing" >&2; exit 1; }
-[ -x /usr/local/lib/intentsolutions/buzz-notify.sh ]
+# The alert floor's primary channel is Discord; Buzz was retired 2026-11-12 (intent-os INC-2026-11-22).
+[ -r /etc/intentsolutions/alert-discord-webhook ] || { echo "Alert channel webhook missing" >&2; exit 1; }
 [ -f /usr/local/lib/intentsolutions/alert-floor.sh ]
 install_root=/usr/local/lib/intentsolutions/mission-control-public
 artifact="$install_root/releases/$revision"
@@ -45,8 +46,6 @@ Environment=HOME=/var/lib/$job
 Environment=MC_JOB_STATE=/var/lib/$job
 Environment=AF_STATE_DIR=/var/lib/$job/alert-floor
 Environment=MC_ALERT_FLOOR=/usr/local/lib/intentsolutions/alert-floor.sh
-Environment=AF_BUZZ_CMD=/usr/local/lib/intentsolutions/buzz-notify.sh
-Environment=BUZZ_NOTIFY_BIN=/usr/local/bin/buzz
 EnvironmentFile=$credentials
 ExecStart=/bin/bash $artifact/scripts/mission_control_job.sh $mode
 # A bad product sample already has an accepted governed alert; delivery errors fail.
@@ -69,8 +68,6 @@ Type=oneshot
 User=$monitor_user
 Environment=HOME=/var/lib/$job
 Environment=AF_STATE_DIR=/var/lib/$job/alert-floor
-Environment=AF_BUZZ_CMD=/usr/local/lib/intentsolutions/buzz-notify.sh
-Environment=BUZZ_NOTIFY_BIN=/usr/local/bin/buzz
 Environment=AF_HC_URL=
 EnvironmentFile=$credentials
 ExecStart=/bin/bash /usr/local/lib/intentsolutions/alert-floor.sh dispatch "$job execution or alert delivery failed" "$job monitor failure" critical sys-automation
